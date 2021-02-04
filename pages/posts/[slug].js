@@ -14,7 +14,7 @@ export async function getStaticPaths() {
   const data = await request({ query: `{ allArticles { slug } }` });
 
   return {
-    paths: data.article.map((post) => `/posts/${post.slug}`),
+    paths: data.map((post) => `/posts/${post.slug}`),
     fallback: false,
   };
 }
