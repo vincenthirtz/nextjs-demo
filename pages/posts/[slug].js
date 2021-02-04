@@ -8,13 +8,12 @@ import PostBody from "../../components/post-body";
 import PostHeader from "../../components/post-header";
 import SectionSeparator from "../../components/section-separator";
 import { request } from "../../lib/datocms";
-import { metaTagsFragment, responsiveImageFragment } from "../../lib/fragments";
+import {  responsiveImageFragment } from "../../lib/fragments";
 
 export async function getStaticPaths() {
   const data = await request({ query: `{ allArticles { slug } }` });
-
   return {
-    paths: data.map((post) => `/posts/${post.slug}`),
+    paths: data.allArticles.map((post) => `/posts/${post.slug}`),
     fallback: false,
   };
 }
@@ -23,56 +22,34 @@ export async function getStaticProps({ params, preview = false }) {
   const graphqlRequest = {
     query: `
       query PostBySlug($slug: String) {
-        site: _site {
-          favicon: faviconMetaTags {
-            ...metaTagsFragment
-          }
-        }
-        post(filter: {slug: {eq: $slug}}) {
-          seo: _seoMetaTags {
-            ...metaTagsFragment
-          }
-          title
+        article(filter: {slug: {eq: $slug}}) {
+          titre
           slug
-          content(markdown: true)
           date
-          ogImage: coverImage{
-            url(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 })
-          }
-          coverImage {
+          body
+          authorname
+          image {
             responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
               ...responsiveImageFragment
-            }
-          }
-          author {
-            name
-            picture {
-              url(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100, sat: -100})
             }
           }
         }
 
-        morePosts: article(orderBy: date_DESC, first: 2, filter: {slug: {neq: $slug}}) {
-          title
+        morePosts: allArticles(orderBy: date_DESC, first: 2, filter: {slug: {neq: $slug}}) {
+          titre
           slug
-          excerpt
           date
-          coverImage {
+          body
+          authorname
+          image {
             responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
               ...responsiveImageFragment
-            }
-          }
-          author {
-            name
-            picture {
-              url(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100, sat: -100})
             }
           }
         }
       }
 
       ${responsiveImageFragment}
-      ${metaTagsFragment}
     `,
     preview,
     variables: {
@@ -98,24 +75,21 @@ export async function getStaticProps({ params, preview = false }) {
 
 export default function Post({ subscription, preview }) {
   const {
-    data: { site, post, morePosts },
+    data: {article, morePosts },
   } = useQuerySubscription(subscription);
-
-  const metaTags = post.seo.concat(site.favicon);
 
   return (
     <Layout preview={preview}>
-      <Head>{renderMetaTags(metaTags)}</Head>
       <Container>
         <Header />
         <article>
           <PostHeader
-            title={post.title}
-            coverImage={post.coverImage}
-            date={post.date}
-            author={post.author}
+            title={article.titre}
+            image={article.image}
+            date={article.date}
+            authorname={article.authorname}
           />
-          <PostBody content={post.content} />
+          <PostBody content={article.body} />
         </article>
         <SectionSeparator />
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}

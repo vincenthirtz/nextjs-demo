@@ -6,7 +6,7 @@ import Intro from "../components/intro";
 import Layout from "../components/layout";
 import MoreStories from "../components/more-stories";
 import { request } from "../lib/datocms";
-import {  responsiveImageFragment } from "../lib/fragments";
+import { responsiveImageFragment } from "../lib/fragments";
 
 export async function getStaticProps({ preview }) {
   const graphqlRequest = {
@@ -51,11 +51,9 @@ export default function Index({ subscription }) {
   const {
     data: { allArticles },
   } = useQuerySubscription(subscription);
-  console.log("allArticles ", allArticles)
 
   const heroPost = allArticles[0];
-  console.log("heroPost ", heroPost)
-  // const morePosts = article.slice(1);
+  const morePosts = allArticles.slice(1);
   // const metaTags = blog.seo.concat(site.favicon);
 
   return (
@@ -74,7 +72,7 @@ export default function Index({ subscription }) {
               excerpt={heroPost.body}
             />
           )}
-          {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
+          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
         </Container>
       </Layout>
     </>
