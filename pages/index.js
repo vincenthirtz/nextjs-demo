@@ -6,42 +6,26 @@ import Intro from "../components/intro";
 import Layout from "../components/layout";
 import MoreStories from "../components/more-stories";
 import { request } from "../lib/datocms";
-import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
+import {  responsiveImageFragment } from "../lib/fragments";
 
 export async function getStaticProps({ preview }) {
   const graphqlRequest = {
     query: `
       {
-        site: _site {
-          favicon: faviconMetaTags {
-            ...metaTagsFragment
-          }
-        }
-        blog {
-          seo: _seoMetaTags {
-            ...metaTagsFragment
-          }
-        }
-        allPosts(orderBy: date_DESC, first: 20) {
-          title
+        article {
+          titre
           slug
-          excerpt
           date
-          coverImage {
+          body
+          authorname
+          image {
             responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
               ...responsiveImageFragment
-            }
-          }
-          author {
-            name
-            picture {
-              url(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100, sat: -100})
             }
           }
         }
       }
 
-      ${metaTagsFragment}
       ${responsiveImageFragment}
     `,
     preview,
@@ -65,30 +49,31 @@ export async function getStaticProps({ preview }) {
 
 export default function Index({ subscription }) {
   const {
-    data: { allPosts, site, blog },
+    data: { article },
   } = useQuerySubscription(subscription);
 
-  const heroPost = allPosts[0];
-  const morePosts = allPosts.slice(1);
-  const metaTags = blog.seo.concat(site.favicon);
+  const heroPost = article[0];
+  console.log("heroPost ", heroPost)
+  // const morePosts = article.slice(1);
+  // const metaTags = blog.seo.concat(site.favicon);
 
   return (
     <>
       <Layout preview={subscription.preview}>
-        <Head>{renderMetaTags(metaTags)}</Head>
+        {/* <Head>{renderMetaTags(metaTags)}</Head> */}
         <Container>
           <Intro />
           {heroPost && (
             <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
+              title={heroPost.titre}
+              coverImage={heroPost.image}
               date={heroPost.date}
-              author={heroPost.author}
+              author={heroPost.authorname}
               slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
+              excerpt={heroPost.body}
             />
           )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
         </Container>
       </Layout>
     </>
