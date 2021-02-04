@@ -12,7 +12,7 @@ export async function getStaticProps({ preview }) {
   const graphqlRequest = {
     query: `
       {
-        article {
+        allArticles(orderBy: date_DESC) {
           titre
           slug
           date
@@ -49,10 +49,11 @@ export async function getStaticProps({ preview }) {
 
 export default function Index({ subscription }) {
   const {
-    data: { article },
+    data: { allArticles },
   } = useQuerySubscription(subscription);
+  console.log("allArticles ", allArticles)
 
-  const heroPost = article[0];
+  const heroPost = allArticles[0];
   console.log("heroPost ", heroPost)
   // const morePosts = article.slice(1);
   // const metaTags = blog.seo.concat(site.favicon);

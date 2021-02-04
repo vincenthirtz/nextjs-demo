@@ -11,7 +11,7 @@ import { request } from "../../lib/datocms";
 import { metaTagsFragment, responsiveImageFragment } from "../../lib/fragments";
 
 export async function getStaticPaths() {
-  const data = await request({ query: `{ allPosts { slug } }` });
+  const data = await request({ query: `{ article { slug } }` });
 
   return {
     paths: data.article.map((post) => `/posts/${post.slug}`),
@@ -52,7 +52,7 @@ export async function getStaticProps({ params, preview = false }) {
           }
         }
 
-        morePosts: allPosts(orderBy: date_DESC, first: 2, filter: {slug: {neq: $slug}}) {
+        morePosts: article(orderBy: date_DESC, first: 2, filter: {slug: {neq: $slug}}) {
           title
           slug
           excerpt
