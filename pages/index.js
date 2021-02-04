@@ -16,6 +16,7 @@ export async function getStaticProps({ preview }) {
           titre
           slug
           date
+          resume
           body
           authorname
           image {
@@ -69,7 +70,7 @@ export default function Index({ subscription }) {
               date={heroPost.date}
               author={heroPost.authorname}
               slug={heroPost.slug}
-              excerpt={heroPost.body}
+              excerpt={heroPost.resume}
             />
           )}
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}

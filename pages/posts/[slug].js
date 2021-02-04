@@ -27,6 +27,7 @@ export async function getStaticProps({ params, preview = false }) {
           slug
           date
           body
+          resume
           authorname
           image {
             responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
@@ -40,6 +41,7 @@ export async function getStaticProps({ params, preview = false }) {
           slug
           date
           body
+          resume
           authorname
           image {
             responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
