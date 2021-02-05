@@ -28,7 +28,15 @@ export async function getStaticProps({ params, preview = false }) {
           date
           body
           resume
-          authorname
+          author {
+            name
+            description
+            avatar  {
+              responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
+                ...responsiveImageFragment
+              }
+          }
+        }
           image {
             responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
               ...responsiveImageFragment
@@ -42,7 +50,15 @@ export async function getStaticProps({ params, preview = false }) {
           date
           body
           resume
-          authorname
+          author {
+            name
+            description
+            avatar  {
+              responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
+                ...responsiveImageFragment
+              }
+          }
+        }
           image {
             responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
               ...responsiveImageFragment
@@ -86,10 +102,10 @@ export default function Post({ subscription, preview }) {
         <Header />
         <article>
           <PostHeader
-            title={article.titre}
+            titre={article.titre}
             image={article.image}
             date={article.date}
-            authorname={article.authorname}
+            author={article.author}
           />
           <PostBody content={article.body} />
         </article>

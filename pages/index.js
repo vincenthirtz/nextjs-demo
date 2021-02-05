@@ -18,7 +18,15 @@ export async function getStaticProps({ preview }) {
           date
           resume
           body
-          authorname
+          author {
+            name
+            description
+            avatar  {
+              responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
+                ...responsiveImageFragment
+              }
+          }
+        }
           image {
             responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
               ...responsiveImageFragment
@@ -65,10 +73,10 @@ export default function Index({ subscription }) {
           <Intro />
           {heroPost && (
             <HeroPost
-              title={heroPost.titre}
-              coverImage={heroPost.image}
+              titre={heroPost.titre}
+              image={heroPost.image}
               date={heroPost.date}
-              author={heroPost.authorname}
+              author={heroPost.author}
               slug={heroPost.slug}
               excerpt={heroPost.resume}
             />

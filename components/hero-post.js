@@ -4,8 +4,8 @@ import CoverImage from "../components/cover-image";
 import Link from "next/link";
 
 export default function HeroPost({
-  title,
-  coverImage,
+  titre,
+  image,
   date,
   excerpt,
   author,
@@ -15,8 +15,8 @@ export default function HeroPost({
     <section>
       <div className="mb-8 md:mb-16">
         <CoverImage
-          title={title}
-          responsiveImage={coverImage.responsiveImage}
+          title={titre}
+          responsiveImage={image.responsiveImage}
           slug={slug}
         />
       </div>
@@ -24,7 +24,7 @@ export default function HeroPost({
         <div>
           <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
             <Link as={`/posts/${slug}`} href="/posts/[slug]">
-              <a className="hover:underline">{title}</a>
+              <a className="hover:underline">{titre}</a>
             </Link>
           </h3>
           <div className="mb-4 md:mb-0 text-lg">
@@ -33,7 +33,7 @@ export default function HeroPost({
         </div>
         <div>
           <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-          {author}
+          <Avatar alt={author.name} src={author.avatar} />
         </div>
       </div>
     </section>
