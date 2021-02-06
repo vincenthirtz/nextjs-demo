@@ -90,7 +90,6 @@ export default function Contact() {
   }
 
   function onChange(value) {
-    console.log("Captcha value:", value);
     setGoogleCode(value)
   }
 
@@ -144,7 +143,7 @@ export default function Contact() {
                       <ReCAPTCHA
                         sitekey="6LfHB00aAAAAAHBd41U1IzNVzoZNt58YGVqndmNh"
                         onChange={onChange}
-                      />,
+                      />
 
                       <Button
                         color="primary"
