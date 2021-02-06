@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Head from "next/head";
 import Intro from "../components/intro";
 import Container from "../components/container";
@@ -6,70 +7,153 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import emailjs from 'emailjs-com';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(4),
+    margin: 'auto',
+    maxWidth: 500,
+  },
+}));
 
 export default function Contact() {
+  const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const [res, setRes] = useState({});
+
   const validationSchema = yup.object({
     email: yup
       .string("Enter your email")
       .email("Enter a valid email")
       .required("Email is required"),
-    password: yup
-      .string("Enter your password")
-      .min(8, "Password should be of minimum 8 characters length")
-      .required("Password is required"),
+    subject: yup
+      .string("Enter your subject")
+      .min(5, "Message should be of minimum 5 characters length")
+      .required("Subject is required"),
+    message: yup
+      .string("Enter your message")
+      .min(20, "Message should be of minimum 20 characters length")
+      .required("Message is required"),
   });
 
   const formik = useFormik({
     initialValues: {
       email: "foobar@example.com",
-      password: "foobar",
+      subject: "sujet",
+      message: "message",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      console.log("values ", values)
+      var templateParams = {
+        subject: values.subject,
+        message: values.message,
+        email: values.email,
+      };
+
+      emailjs.send('gmail', 'template_c41sr4d', templateParams, 'user_Va7JBiVD56bGbkAiSk2Xj')
+        .then(function (response) {
+          setRes({ status: response.status, text: response.text })
+          handleClick()
+        }, function (error) {
+          setRes({ status: "error", text: error })
+          handleClick()
+        });
     },
   });
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 
   return (
     <>
       <Layout>
         <Container>
-        <Intro />
-          <div>
+          <Intro />
+          <div className={classes.root}>
             <form onSubmit={formik.handleSubmit}>
-              <TextField
-                fullWidth
-                id="email"
-                name="email"
-                label="Email"
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                error={formik.touched.email && Boolean(formik.errors.email)}
-                helperText={formik.touched.email && formik.errors.email}
-              />
-              <TextField
-                fullWidth
-                id="password"
-                name="password"
-                label="Password"
-                type="password"
-                value={formik.values.password}
-                onChange={formik.handleChange}
-                error={
-                  formik.touched.password && Boolean(formik.errors.password)
-                }
-                helperText={formik.touched.password && formik.errors.password}
-              />
-              <Button
-                color="primary"
-                variant="contained"
-                fullWidth
-                type="submit"
-              >
-                Submit
+              <Paper className={classes.paper}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm container>
+                    <Grid item xs container direction="column" spacing={4}>
+                      <TextField
+                        id="email"
+                        name="email"
+                        label="Email"
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                        error={formik.touched.email && Boolean(formik.errors.email)}
+                        helperText={formik.touched.email && formik.errors.email}
+                      />
+
+                      <TextField
+                        id="subject"
+                        name="subject"
+                        label="Sujet"
+                        value={formik.values.subject}
+                        onChange={formik.handleChange}
+                        error={formik.touched.subject && Boolean(formik.errors.subject)}
+                        helperText={formik.touched.subject && formik.errors.subject}
+                      />
+
+                      <TextField
+                        id="message"
+                        name="message"
+                        label="Message"
+                        type="text"
+                        value={formik.values.message}
+                        onChange={formik.handleChange}
+                        error={
+                          formik.touched.message && Boolean(formik.errors.message)
+                        }
+                        helperText={formik.touched.message && formik.errors.message}
+                        multiline
+                        rows={2}
+                        rowsMax={4}
+                      />
+
+                      <div class="g-recaptcha" data-sitekey="6LfHB00aAAAAAHBd41U1IzNVzoZNt58YGVqndmNh"></div>
+
+                      <Button
+                        color="primary"
+                        variant="contained"
+                        type="submit"
+                      >
+                        Envoyer
               </Button>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Paper>
             </form>
           </div>
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity={res.status === 200 ? "success" : "error"}>
+              {res.status === 200 ? "Formulaire envoyé, merci" : "Erreur, le service n'est pas disponible"}
+            </Alert>
+          </Snackbar>
         </Container>
       </Layout>
     </>
