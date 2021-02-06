@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import emailjs from 'emailjs-com';
+import ReCAPTCHA from "react-google-recaptcha";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +30,7 @@ export default function Contact() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [res, setRes] = useState({});
+  const [googleCode, setGoogleCode] = useState('');
 
   const validationSchema = yup.object({
     email: yup
@@ -53,11 +55,11 @@ export default function Contact() {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log("values ", values)
       var templateParams = {
         subject: values.subject,
         message: values.message,
         email: values.email,
+        'g-recaptcha-response': googleCode
       };
 
       emailjs.send('gmail', 'template_c41sr4d', templateParams, 'user_Va7JBiVD56bGbkAiSk2Xj')
@@ -85,6 +87,11 @@ export default function Contact() {
 
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+
+  function onChange(value) {
+    console.log("Captcha value:", value);
+    setGoogleCode(value)
   }
 
   return (
@@ -134,7 +141,10 @@ export default function Contact() {
                         rowsMax={4}
                       />
 
-                      <div class="g-recaptcha" data-sitekey="6LfHB00aAAAAAHBd41U1IzNVzoZNt58YGVqndmNh"></div>
+                      <ReCAPTCHA
+                        sitekey="6LfHB00aAAAAAHBd41U1IzNVzoZNt58YGVqndmNh"
+                        onChange={onChange}
+                      />,
 
                       <Button
                         color="primary"
