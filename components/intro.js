@@ -5,27 +5,22 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import Brightness3Icon from '@material-ui/icons/Brightness3';
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import Switch from "@material-ui/core/Switch";
 import { useTheme } from "next-themes";
 
 export default function Intro() {
-  const [isMounted, setIsMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const [checked, setChecked] = useState(false);
 
   const handleChange = () => {
-    switchTheme();
-    setChecked(!checked);
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
-  const switchTheme = () => {
-    if (isMounted) {
-      setTheme(theme === "light" ? "dark" : "light");
-    }
-  };
+    setChecked(theme === "light" ? false : true);
+  }, [theme]);
 
   return (
     <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
@@ -35,12 +30,17 @@ export default function Intro() {
         </Link>
       </h1>
       <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
-        <Switch
-          checked={checked}
-          onChange={handleChange}
-          name="checkedA"
-          inputProps={{ "aria-label": "primary checkbox" }}
-        />
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <WbSunnyIcon />
+          <Switch
+            color="primary"
+            checked={checked}
+            onChange={handleChange}
+            name="checkedA"
+            inputProps={{ "aria-label": "primary checkbox" }}
+          />
+          <Brightness3Icon />
+        </div>
         <a href="https://linkedin.com/in/hirtzvincent/" target="_blank">
           <LinkedInIcon />
         </a>
