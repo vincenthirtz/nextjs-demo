@@ -28,15 +28,19 @@ export default function Layout({ preview, children }) {
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = (bool) => {
-    console.log("bool ", bool);
     setOpen(bool);
   };
 
   const list = (string) => (
     <div
-      className={clsx(classes.list, {
-        [classes.fullList]: string === "top" || string === "bottom",
-      })}
+      className={clsx(
+        "bg-white text-black dark:bg-black dark:text-white",
+        classes.list,
+        {
+          [classes.fullList]: string === "top" || string === "bottom",
+        }
+      )}
+      style={{ height: "100%" }}
       role="presentation"
       // onClick={() => toggleDrawer(false)}
       // onKeyDown={() => toggleDrawer(false)}
@@ -45,7 +49,7 @@ export default function Layout({ preview, children }) {
         <Link href="/">
           <a>
             <ListItem button key="Home">
-              <ListItemIcon>
+              <ListItemIcon className="dark:text-white">
                 <HomeIcon />
               </ListItemIcon>
               <ListItemText primary="Home" />
@@ -55,7 +59,7 @@ export default function Layout({ preview, children }) {
         <Link href="/contact">
           <a>
             <ListItem button key="Contact">
-              <ListItemIcon>
+              <ListItemIcon className="dark:text-white">
                 <MailOutlineIcon />
               </ListItemIcon>
               <ListItemText primary="Contact" />

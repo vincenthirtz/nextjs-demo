@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
             content="initial-scale=1.0, width=device-width"
           />
         </Head>
-        <body>
+        <body className="bg-white text-black dark:bg-black dark:text-white">
           <Main />
           <NextScript />
         </body>
