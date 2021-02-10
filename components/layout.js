@@ -13,6 +13,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import DeveloperBoardIcon from '@material-ui/icons/DeveloperBoard';
 
 const useStyles = makeStyles({
   list: {
@@ -53,6 +54,16 @@ export default function Layout({ preview, children }) {
                 <HomeIcon />
               </ListItemIcon>
               <ListItemText primary="Home" />
+            </ListItem>
+          </a>
+        </Link>
+        <Link href="/portfolio">
+          <a>
+            <ListItem button key="Portfolio">
+              <ListItemIcon className="dark:text-white">
+                <DeveloperBoardIcon />
+              </ListItemIcon>
+              <ListItemText primary="Portfolio" />
             </ListItem>
           </a>
         </Link>
