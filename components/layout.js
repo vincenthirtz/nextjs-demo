@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import clsx from "clsx";
+import cn from "classnames";
 import Alert from "../components/alert";
 import Footer from "../components/footer";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
@@ -13,7 +13,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import DeveloperBoardIcon from '@material-ui/icons/DeveloperBoard';
+import DeveloperBoardIcon from "@material-ui/icons/DeveloperBoard";
+import FaceIcon from "@material-ui/icons/Face";
 
 const useStyles = makeStyles({
   list: {
@@ -34,7 +35,7 @@ export default function Layout({ preview, children }) {
 
   const list = (string) => (
     <div
-      className={clsx(
+      className={cn(
         "bg-white text-black dark:bg-black dark:text-white",
         classes.list,
         {
@@ -64,6 +65,16 @@ export default function Layout({ preview, children }) {
                 <DeveloperBoardIcon />
               </ListItemIcon>
               <ListItemText primary="Portfolio" />
+            </ListItem>
+          </a>
+        </Link>
+        <Link href="/resume">
+          <a>
+            <ListItem button key="CV">
+              <ListItemIcon className="dark:text-white">
+                <FaceIcon />
+              </ListItemIcon>
+              <ListItemText primary="CV" />
             </ListItem>
           </a>
         </Link>
