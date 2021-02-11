@@ -15,6 +15,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import DeveloperBoardIcon from "@material-ui/icons/DeveloperBoard";
 import FaceIcon from "@material-ui/icons/Face";
+import LiveTvIcon from '@material-ui/icons/LiveTv';
 
 const useStyles = makeStyles({
   list: {
@@ -65,6 +66,16 @@ export default function Layout({ preview, children }) {
                 <DeveloperBoardIcon />
               </ListItemIcon>
               <ListItemText primary="Portfolio" />
+            </ListItem>
+          </a>
+        </Link>
+        <Link href="/live">
+          <a>
+            <ListItem button key="Live">
+              <ListItemIcon className="dark:text-white">
+                <LiveTvIcon />
+              </ListItemIcon>
+              <ListItemText primary="Live" />
             </ListItem>
           </a>
         </Link>
