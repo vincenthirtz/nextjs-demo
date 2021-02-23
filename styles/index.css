@@ -3,3 +3,7 @@
 @tailwind components;
 /* purgecss end ignore */
 @tailwind utilities;
+
+html {
+    font-family: 'Rubik', sans-serif;
+}
