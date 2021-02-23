@@ -23,6 +23,23 @@ export async function getStaticProps({ preview }) {
   const graphqlRequest = {
     query: `
       {
+        _site {
+          globalSeo {
+            siteName
+            titleSuffix
+            twitterAccount
+            fallbackSeo {
+              title
+              twitterCard
+              description
+            }
+          }
+          faviconMetaTags {
+            tag
+            content
+            attributes
+          }
+        }
         allPortfolios {
         description
         name
@@ -43,14 +60,14 @@ export async function getStaticProps({ preview }) {
     props: {
       subscription: preview
         ? {
-            ...graphqlRequest,
-            initialData: await request(graphqlRequest),
-            token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
-          }
+          ...graphqlRequest,
+          initialData: await request(graphqlRequest),
+          token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
+        }
         : {
-            enabled: false,
-            initialData: await request(graphqlRequest),
-          },
+          enabled: false,
+          initialData: await request(graphqlRequest),
+        },
     },
   };
 }
@@ -58,14 +75,20 @@ export async function getStaticProps({ preview }) {
 export default function Portfolio({ subscription }) {
   const classes = useStyles();
   const {
-    data: { allPortfolios },
+    data: { _site, allPortfolios },
   } = useQuerySubscription(subscription);
 
   const portfolio = allPortfolios;
+  const { globalSeo } = _site;
 
   return (
     <>
       <Layout>
+        <Head>
+          <title>Portfolio {globalSeo.titleSuffix}</title>
+          <meta name="author" content={globalSeo.siteName} />
+          <meta name="description" content={globalSeo.fallbackSeo.description}></meta>
+        </Head>
         <Container>
           <Intro />
           <div className={classes.root}>

@@ -14,6 +14,8 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import emailjs from 'emailjs-com';
 import ReCAPTCHA from "react-google-recaptcha";
+import { request } from "../lib/datocms";
+import { useQuerySubscription } from "react-datocms";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +28,50 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Contact() {
+export async function getStaticProps({ preview }) {
+  const graphqlRequest = {
+    query: `
+      {
+        _site {
+          globalSeo {
+            siteName
+            titleSuffix
+            twitterAccount
+            fallbackSeo {
+              title
+              twitterCard
+              description
+            }
+          }
+          faviconMetaTags {
+            tag
+            content
+            attributes
+          }
+        }
+      }
+
+    `,
+    preview,
+  };
+
+  return {
+    props: {
+      subscription: preview
+        ? {
+          ...graphqlRequest,
+          initialData: await request(graphqlRequest),
+          token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
+        }
+        : {
+          enabled: false,
+          initialData: await request(graphqlRequest),
+        },
+    },
+  };
+}
+
+export default function Contact({ subscription }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [res, setRes] = useState({});
@@ -49,7 +94,7 @@ export default function Contact() {
 
   const formik = useFormik({
     initialValues: {
-      email: "foobar@example.com",
+      email: "email@example.com",
       subject: "sujet",
       message: "message",
     },
@@ -93,9 +138,20 @@ export default function Contact() {
     setGoogleCode(value)
   }
 
+  const {
+    data: { _site },
+  } = useQuerySubscription(subscription);
+
+  const { globalSeo } = _site;
+
   return (
     <>
       <Layout>
+        <Head>
+        <title>Contact {globalSeo.titleSuffix}</title>
+          <meta name="author" content={globalSeo.siteName} />
+          <meta name="description" content={globalSeo.fallbackSeo.description}></meta>
+        </Head>
         <Container>
           <Intro />
           <div className={classes.root}>

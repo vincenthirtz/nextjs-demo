@@ -16,6 +16,8 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import Button from "@material-ui/core/Button";
+import { request } from "../lib/datocms";
+import { useQuerySubscription } from "react-datocms";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,12 +31,63 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Resume() {
+export async function getStaticProps({ preview }) {
+  const graphqlRequest = {
+    query: `
+      {
+        _site {
+          globalSeo {
+            siteName
+            titleSuffix
+            twitterAccount
+            fallbackSeo {
+              title
+              twitterCard
+              description
+            }
+          }
+          faviconMetaTags {
+            tag
+            content
+            attributes
+          }
+        }
+      }
+      `,
+    preview,
+  };
+
+  return {
+    props: {
+      subscription: preview
+        ? {
+          ...graphqlRequest,
+          initialData: await request(graphqlRequest),
+          token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
+        }
+        : {
+          enabled: false,
+          initialData: await request(graphqlRequest),
+        },
+    },
+  };
+}
+
+export default function Resume({ subscription }) {
   const classes = useStyles();
+  const {
+    data: { _site },
+  } = useQuerySubscription(subscription);
+const { globalSeo } = _site;
 
   return (
     <>
       <Layout>
+        <Head>
+          <title>CV {globalSeo.titleSuffix}</title>
+          <meta name="author" content={globalSeo.siteName} />
+          <meta name="description" content={globalSeo.fallbackSeo.description}></meta>
+        </Head>
         <Container>
           <Intro />
           <div className={classes.root}>
