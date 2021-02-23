@@ -65,6 +65,23 @@ export async function getStaticProps({ params, preview = false }) {
             }
           }
         }
+        _site {
+          globalSeo {
+            siteName
+            titleSuffix
+            twitterAccount
+            fallbackSeo {
+              title
+              twitterCard
+              description
+            }
+          }
+          faviconMetaTags {
+            tag
+            content
+            attributes
+          }
+        }
       }
 
       ${responsiveImageFragment}
@@ -93,11 +110,18 @@ export async function getStaticProps({ params, preview = false }) {
 
 export default function Post({ subscription, preview }) {
   const {
-    data: {article, morePosts },
+    data: {_site, article, morePosts },
   } = useQuerySubscription(subscription);
+
+  const { globalSeo } = _site;
 
   return (
     <Layout preview={preview}>
+       <Head>
+          <title>{article.titre} {globalSeo.titleSuffix}</title>
+          <meta name="author" content={globalSeo.siteName} />
+          <meta name="description" content={globalSeo.fallbackSeo.description}></meta>
+        </Head>
       <Container>
         <Header />
         <article>

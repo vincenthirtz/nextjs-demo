@@ -12,6 +12,23 @@ export async function getStaticProps({ preview }) {
   const graphqlRequest = {
     query: `
       {
+        _site {
+          globalSeo {
+            siteName
+            titleSuffix
+            twitterAccount
+            fallbackSeo {
+              title
+              twitterCard
+              description
+            }
+          }
+          faviconMetaTags {
+            tag
+            content
+            attributes
+          }
+        }
         allArticles(orderBy: date_DESC) {
           titre
           slug
@@ -44,31 +61,35 @@ export async function getStaticProps({ preview }) {
     props: {
       subscription: preview
         ? {
-            ...graphqlRequest,
-            initialData: await request(graphqlRequest),
-            token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
-          }
+          ...graphqlRequest,
+          initialData: await request(graphqlRequest),
+          token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,  
+        }
         : {
-            enabled: false,
-            initialData: await request(graphqlRequest),
-          },
+          enabled: false,
+          initialData: await request(graphqlRequest),
+        },
     },
   };
 }
 
 export default function Index({ subscription }) {
   const {
-    data: { allArticles },
+    data: { allArticles, _site },
   } = useQuerySubscription(subscription);
 
   const heroPost = allArticles[0];
   const morePosts = allArticles.slice(1);
-  // const metaTags = blog.seo.concat(site.favicon);
+  const { globalSeo } = _site;
 
   return (
     <>
       <Layout preview={subscription.preview}>
-        {/* <Head>{renderMetaTags(metaTags)}</Head> */}
+        <Head>
+          <title>{globalSeo.siteName}</title>
+          <meta name="author" content={globalSeo.siteName} />
+          <meta name="description" content={globalSeo.fallbackSeo.description}></meta>
+        </Head>
         <Container>
           <Intro />
           {heroPost && (
