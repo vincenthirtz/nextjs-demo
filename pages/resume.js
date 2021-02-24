@@ -15,6 +15,7 @@ import LaptopMacIcon from "@material-ui/icons/LaptopMac";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
+import BuildIcon from '@material-ui/icons/Build';
 import Button from "@material-ui/core/Button";
 import { request } from "../lib/datocms";
 import { useQuerySubscription } from "react-datocms";
@@ -168,7 +169,7 @@ export default function Resume({ subscription }) {
                 </TimelineOppositeContent>
                 <TimelineSeparator>
                   <TimelineDot>
-                    <LaptopMacIcon />
+                    <BuildIcon />
                   </TimelineDot>
                   <TimelineConnector />
                 </TimelineSeparator>
