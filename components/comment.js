@@ -97,7 +97,7 @@ export default function Comment({ comments, slug }) {
                 defaultCollapseIcon={<ExpandMoreIcon />}
                 defaultExpandIcon={<ChevronRightIcon />}
             >
-                <TreeItem nodeId={subcomment.id} label="Réponses">
+                <TreeItem nodeId={subcomment.id} label={`Réponses (${subCommentBySlug.length})`}>
                     <div key={subcomment.id} className="block mb-6">
                         <Avatar alt={subcomment.name} />
                         <div
