@@ -38,6 +38,7 @@ export default function Comment({ comments, slug }) {
 
     const commentBySlug = comments.filter(com => com.slug === slug && !com.pid);
 
+
     const validationSchema = yup.object({
         name: yup
             .string("Enter your name")
@@ -90,7 +91,6 @@ export default function Comment({ comments, slug }) {
 
     const getSubComments = id => {
         const subCommentBySlug = comments.filter(com => com.pid === id);
-
         return subCommentBySlug.map(subcomment => (
             <TreeView
                 className={classes.tree}
@@ -122,7 +122,7 @@ export default function Comment({ comments, slug }) {
     return (
         <section>
             <h2 className="mb-8 text-6xl md:text-5xl font-bold tracking-tighter leading-tight">
-                Commentaires ({comments.length}) <Button
+                Commentaires ({commentBySlug.length}) <Button
                     onClick={() => handleAdd()}
                     color="primary"
 
