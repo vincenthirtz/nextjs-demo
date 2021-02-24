@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import GoogleFonts from "next-google-fonts";
 
 export default class MyDocument extends Document {
   render() {
@@ -7,7 +8,7 @@ export default class MyDocument extends Document {
         <Head>
           <title>Vincent Hirtz</title>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet" />
+          <GoogleFonts href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" />
           <meta
             name="viewport"
             content="initial-scale=1.0, width=device-width"
