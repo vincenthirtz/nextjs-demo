@@ -8,7 +8,7 @@ import PostBody from "../../components/post-body";
 import PostHeader from "../../components/post-header";
 import SectionSeparator from "../../components/section-separator";
 import { request } from "../../lib/datocms";
-import {  responsiveImageFragment } from "../../lib/fragments";
+import { responsiveImageFragment } from "../../lib/fragments";
 
 export async function getStaticPaths() {
   const data = await request({ query: `{ allArticles { slug } }` });
@@ -110,18 +110,23 @@ export async function getStaticProps({ params, preview = false }) {
 
 export default function Post({ subscription, preview }) {
   const {
-    data: {_site, article, morePosts },
+    data: { _site, article, morePosts },
   } = useQuerySubscription(subscription);
 
   const { globalSeo } = _site;
 
   return (
     <Layout preview={preview}>
-       <Head>
-          <title>{article.titre} {globalSeo.titleSuffix}</title>
-          <meta name="author" content={globalSeo.siteName} />
-          <meta name="description" content={globalSeo.fallbackSeo.description}></meta>
-        </Head>
+      <Head>
+        <title>
+          {article.titre} {globalSeo.titleSuffix}
+        </title>
+        <meta name="author" content={globalSeo.siteName} />
+        <meta
+          name="description"
+          content={globalSeo.fallbackSeo.description}
+        ></meta>
+      </Head>
       <Container>
         <Header />
         <article>
@@ -129,9 +134,13 @@ export default function Post({ subscription, preview }) {
             titre={article.titre}
             image={article.image}
             date={article.date}
+          />
+          <PostBody
+            name={article.titre}
+            content={article.body}
+            slug={article.slug}
             author={article.author}
           />
-          <PostBody content={article.body} />
         </article>
         <SectionSeparator />
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
