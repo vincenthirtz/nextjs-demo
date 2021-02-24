@@ -52,8 +52,8 @@ export default function Comment({ comments, slug }) {
 
     const formik = useFormik({
         initialValues: {
-            name: "email@example.com",
-            message: "message",
+            name: "",
+            message: "",
         },
         validationSchema: validationSchema,
         onSubmit: (values, { resetForm }) => {
