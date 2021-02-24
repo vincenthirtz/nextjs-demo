@@ -163,6 +163,38 @@ export default function Resume({ subscription }) {
                     variant="body2"
                     color="textSecondary"
                   >
+                    Juin 2015 - Janvier 2016
+                  </Typography>
+                </TimelineOppositeContent>
+                <TimelineSeparator>
+                  <TimelineDot>
+                    <LaptopMacIcon />
+                  </TimelineDot>
+                  <TimelineConnector />
+                </TimelineSeparator>
+                <TimelineContent>
+                  <Paper
+                    elevation={3}
+                    className={cn(
+                      "dark:bg-black dark:text-white",
+                      classes.paper
+                    )}
+                  >
+                    <Typography variant="h6" component="h1">
+                      Laguerre
+                    </Typography>
+                    <Typography>Rouen, France</Typography>
+                    <Typography>Employé de fabrication</Typography>
+                  </Paper>
+                </TimelineContent>
+              </TimelineItem>
+              <TimelineItem>
+                <TimelineOppositeContent>
+                  <Typography
+                    className="dark:text-white"
+                    variant="body2"
+                    color="textSecondary"
+                  >
                     Mars 2016
                   </Typography>
                 </TimelineOppositeContent>
