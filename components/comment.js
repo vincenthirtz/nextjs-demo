@@ -81,6 +81,7 @@ export default function Comment({ comments, slug }) {
                     .add(params)
                     .then(() => {
                         resetForm({ values: '' })
+                        setGoogleCode(undefined)
                         captcha.reset()
                     })
                     .catch(error => {
