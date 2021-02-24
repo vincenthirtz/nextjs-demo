@@ -112,7 +112,7 @@ export default function Resume({ subscription }) {
                   <Paper
                     elevation={3}
                     className={cn(
-                      "dark:bg-black dark:text-white",
+                      "dark:bg-black dark:text-white p-4",
                       classes.paper
                     )}
                   >
@@ -144,7 +144,7 @@ export default function Resume({ subscription }) {
                   <Paper
                     elevation={3}
                     className={cn(
-                      "dark:bg-black dark:text-white",
+                      "dark:bg-black dark:text-white p-4",
                       classes.paper
                     )}
                   >
@@ -176,7 +176,7 @@ export default function Resume({ subscription }) {
                   <Paper
                     elevation={3}
                     className={cn(
-                      "dark:bg-black dark:text-white",
+                      "dark:bg-black dark:text-white p-4",
                       classes.paper
                     )}
                   >
@@ -208,7 +208,7 @@ export default function Resume({ subscription }) {
                   <Paper
                     elevation={3}
                     className={cn(
-                      "dark:bg-black dark:text-white",
+                      "dark:bg-black dark:text-white p-4",
                       classes.paper
                     )}
                   >
@@ -240,7 +240,7 @@ export default function Resume({ subscription }) {
                   <Paper
                     elevation={3}
                     className={cn(
-                      "dark:bg-black dark:text-white",
+                      "dark:bg-black dark:text-white p-4",
                       classes.paper
                     )}
                   >
