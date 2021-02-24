@@ -35,6 +35,7 @@ export default function Comment({ comments, slug }) {
     const [res, setRes] = useState({});
     const [pid, setPid] = useState(undefined);
     const [googleCode, setGoogleCode] = useState(undefined);
+    const [captcha, setCaptcha] = useState(undefined);
 
     const commentBySlug = comments.filter(com => com.slug === slug && !com.pid);
 
@@ -80,7 +81,7 @@ export default function Comment({ comments, slug }) {
                     .add(params)
                     .then(() => {
                         resetForm({ values: '' })
-                        this.captcha.reset()
+                        captcha.reset()
                     })
                     .catch(error => {
                         setRes({ status: "error", text: error })
@@ -178,7 +179,7 @@ export default function Comment({ comments, slug }) {
                                         />
 
                                         <ReCAPTCHA
-                                            ref={(r) => this.captcha = r}
+                                            ref={(r) => setCaptcha(r)}
                                             sitekey="6LfHB00aAAAAAHBd41U1IzNVzoZNt58YGVqndmNh"
                                             onChange={onChange}
                                         />
