@@ -57,17 +57,27 @@ export default function Comment({ comments, slug }) {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            var templateParams = {
-                content: values.message,
-                name: values.name,
-                slug: slug,
-                pid: pid
-            };
+            let params;
+            
+            if (pid) {
+                params = {
+                    content: values.message,
+                    name: values.name,
+                    slug,
+                    pid
+                }
+            } else {
+                params = {
+                    content: values.message,
+                    name: values.name,
+                    slug,
+                }
+            }
 
             if (googleCode) {
                 firestore
                     .collection(`comments`)
-                    .add(templateParams)
+                    .add(params)
                     .then(response => setRes({ status: response.status, text: "succés" }))
                     .catch(error => {
                         setRes({ status: "error", text: error })
