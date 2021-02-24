@@ -78,7 +78,10 @@ export default function Comment({ comments, slug }) {
                 firestore
                     .collection(`comments`)
                     .add(params)
-                    .then(() => resetForm({ values: '' }))
+                    .then(() => {
+                        resetForm({ values: '' })
+                        this.captcha.reset()
+                    })
                     .catch(error => {
                         setRes({ status: "error", text: error })
                     })
@@ -175,6 +178,7 @@ export default function Comment({ comments, slug }) {
                                         />
 
                                         <ReCAPTCHA
+                                            ref={(r) => this.captcha = r}
                                             sitekey="6LfHB00aAAAAAHBd41U1IzNVzoZNt58YGVqndmNh"
                                             onChange={onChange}
                                         />
