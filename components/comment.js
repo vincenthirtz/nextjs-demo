@@ -56,9 +56,9 @@ export default function Comment({ comments, slug }) {
             message: "message",
         },
         validationSchema: validationSchema,
-        onSubmit: (values) => {
+        onSubmit: (values, { resetForm }) => {
             let params;
-            
+
             if (pid) {
                 params = {
                     content: values.message,
@@ -78,13 +78,14 @@ export default function Comment({ comments, slug }) {
                 firestore
                     .collection(`comments`)
                     .add(params)
-                    .then(response => setRes({ status: response.status, text: "succés" }))
+                    .then(() => resetForm({ values: '' }))
                     .catch(error => {
                         setRes({ status: "error", text: error })
                     })
             } else {
                 setRes({ status: "error", text: "You are a robot!" })
             }
+
         },
     });
 
