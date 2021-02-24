@@ -14,7 +14,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import TreeItem from '@material-ui/lab/TreeItem';
 
-
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -64,8 +63,6 @@ export default function Comment({ comments, slug }) {
                 pid: pid
             };
 
-            console.log("googleCode ", googleCode)
-
             if (googleCode) {
                 firestore
                     .collection(`comments`)
@@ -75,7 +72,6 @@ export default function Comment({ comments, slug }) {
                         setRes({ status: "error", text: error })
                     })
             } else {
-                console.log("toto")
                 setRes({ status: "error", text: "You are a robot!" })
             }
         },
@@ -122,8 +118,6 @@ export default function Comment({ comments, slug }) {
         ))
 
     }
-
-    console.log("res ", res)
 
     return (
         <section>
@@ -206,7 +200,7 @@ export default function Comment({ comments, slug }) {
                             {getSubComments(com.id)}
                         </div></>)}
             </div>
-            {res.status === 'error' && "Erreur, le service n'est pas disponible"}
+            {res.status === 'error' && res.text}
         </section>
     );
 }
