@@ -112,13 +112,10 @@ export async function getStaticProps({ params, preview = false }) {
 }
 
 export default function Post({ subscription, preview }) {
-
   const [comments, setComments] = useState([]);
-
   const {
     data: { _site, article, morePosts },
   } = useQuerySubscription(subscription);
-
 
   useEffect(() => {
     firestore
@@ -130,8 +127,6 @@ export default function Post({ subscription, preview }) {
         setComments(posts)
       })
   }, [])
-
-  console.log("comments ", comments)
 
   const { globalSeo } = _site;
 
@@ -158,7 +153,7 @@ export default function Post({ subscription, preview }) {
           />
         </article>
         <SectionSeparator />
-        {comments.length > 0 && <Comment comments={comments} slug={article.slug} />}
+       <Comment comments={comments} slug={article.slug} />
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </Container>
     </Layout>
