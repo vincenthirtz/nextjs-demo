@@ -78,7 +78,7 @@ export default function Resume({ subscription }) {
   const {
     data: { _site },
   } = useQuerySubscription(subscription);
-const { globalSeo } = _site;
+  const { globalSeo } = _site;
 
   return (
     <>
@@ -223,11 +223,7 @@ const { globalSeo } = _site;
             </Timeline>
           </div>
           <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
+            className="mb-8 justify-center flex">
             <a href="https://www.linkedin.com/in/hirtzvincent/" target="_blank">
               <Button variant="contained" color="primary">
                 Pour en savoir plus
