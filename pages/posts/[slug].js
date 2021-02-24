@@ -1,14 +1,17 @@
+import { useEffect, useState } from 'react';
 import Head from "next/head";
 import { renderMetaTags, useQuerySubscription } from "react-datocms";
 import Container from "../../components/container";
 import Header from "../../components/header";
 import Layout from "../../components/layout";
+import Comment from "../../components/comment";
 import MoreStories from "../../components/more-stories";
 import PostBody from "../../components/post-body";
 import PostHeader from "../../components/post-header";
 import SectionSeparator from "../../components/section-separator";
 import { request } from "../../lib/datocms";
 import { responsiveImageFragment } from "../../lib/fragments";
+import firestore from "../../firebase"
 
 export async function getStaticPaths() {
   const data = await request({ query: `{ allArticles { slug } }` });
@@ -96,36 +99,48 @@ export async function getStaticProps({ params, preview = false }) {
     props: {
       subscription: preview
         ? {
-            ...graphqlRequest,
-            initialData: await request(graphqlRequest),
-            token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
-          }
+          ...graphqlRequest,
+          initialData: await request(graphqlRequest),
+          token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
+        }
         : {
-            enabled: false,
-            initialData: await request(graphqlRequest),
-          },
+          enabled: false,
+          initialData: await request(graphqlRequest),
+        },
     },
   };
 }
 
 export default function Post({ subscription, preview }) {
+
+  const [comments, setComments] = useState([]);
+
   const {
     data: { _site, article, morePosts },
   } = useQuerySubscription(subscription);
+
+
+  useEffect(() => {
+    firestore
+      .collection(`comments`)
+      .onSnapshot(snapshot => {
+        const posts = snapshot.docs.map(doc => {
+            return { id: doc.id, ...doc.data() }
+          })
+        setComments(posts)
+      })
+  }, [])
+
+  console.log("comments ", comments)
 
   const { globalSeo } = _site;
 
   return (
     <Layout preview={preview}>
       <Head>
-        <title>
-          {article.titre} {globalSeo.titleSuffix}
-        </title>
+        <title>{article.titre} {globalSeo.titleSuffix}</title>
         <meta name="author" content={globalSeo.siteName} />
-        <meta
-          name="description"
-          content={globalSeo.fallbackSeo.description}
-        ></meta>
+        <meta name="description" content={globalSeo.fallbackSeo.description}></meta>
       </Head>
       <Container>
         <Header />
@@ -143,6 +158,7 @@ export default function Post({ subscription, preview }) {
           />
         </article>
         <SectionSeparator />
+        {comments.length > 0 && <Comment comments={comments} slug={article.slug} />}
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </Container>
     </Layout>
