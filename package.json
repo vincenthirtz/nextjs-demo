@@ -16,19 +16,19 @@
     "emailjs-com": "^2.6.4",
     "firebase": "^8.2.9",
     "formik": "^2.2.6",
-    "next": "^10.0.6",
+    "next": "^10.0.7",
     "next-google-fonts": "1.2.1",
-    "next-themes": "0.0.10",
+    "next-themes": "0.0.12",
     "react": "^17.0.1",
-    "react-datocms": "1.5.0",
+    "react-datocms": "1.5.5",
     "react-dom": "^17.0.1",
     "react-google-recaptcha": "^2.1.0",
     "react-share": "4.3.1",
     "tiny-json-http": "^7.3.0",
-    "yup": "^0.32.8"
+    "yup": "^0.32.9"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^4.0.0",
+    "@fullhuman/postcss-purgecss": "^4.0.2",
     "dotenv": "8.2.0",
     "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^2.0.3"
