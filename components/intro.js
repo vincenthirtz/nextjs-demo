@@ -7,7 +7,6 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
-import Switch from "@material-ui/core/Switch";
 import { useTheme } from "next-themes";
 
 export default function Intro() {
@@ -32,13 +31,10 @@ export default function Intro() {
       <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
         <div style={{ display: "flex", alignItems: "center" }}>
           <WbSunnyIcon />
-          <Switch
-            color="primary"
-            checked={checked}
-            onChange={handleChange}
-            name="checkedA"
-            inputProps={{ "aria-label": "primary checkbox" }}
-          />
+          <div className="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+            <input type="checkbox" checked={checked} onChange={handleChange} name="toggle" id="toggle" className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
+            <label htmlFor="toggle" className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+          </div>
           <Brightness3Icon />
         </div>
         <a href="https://linkedin.com/in/hirtzvincent/" target="_blank">

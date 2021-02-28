@@ -8,6 +8,15 @@ body {
   font-family: "Rubik", sans-serif;
 }
 
+.toggle-checkbox:checked {
+  right: 0;
+  border-color: #000000;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #FFF;
+}
+
 .Demo__some-network {
   vertical-align: top;
   display: inline-block;
