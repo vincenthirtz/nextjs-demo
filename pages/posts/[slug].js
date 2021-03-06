@@ -29,7 +29,7 @@ export async function getStaticProps({ params, preview = false }) {
           titre
           slug
           date
-          body
+          structured_text_content
           resume
           author {
             name
@@ -51,7 +51,7 @@ export async function getStaticProps({ params, preview = false }) {
           titre
           slug
           date
-          body
+          structured_text_content
           resume
           author {
             name
@@ -147,7 +147,7 @@ export default function Post({ subscription, preview }) {
           />
           <PostBody
             name={article.titre}
-            content={article.body}
+            content={article.structured_text_content}
             slug={article.slug}
             author={article.author}
           />

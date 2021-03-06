@@ -34,7 +34,7 @@ export async function getStaticProps({ preview }) {
           slug
           date
           resume
-          body
+          structured_text_content
           author {
             name
             description
