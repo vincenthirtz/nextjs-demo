@@ -1,14 +1,11 @@
 import Avatar from "./avatar";
-import markdownStyles from "./markdown-styles.module.css";
 import Share from "./share";
+import { StructuredText } from "react-datocms";
 
 export default function PostBody({ name, content, slug, author }) {
   return (
     <div className="max-w-2xl mx-auto">
-      <div
-        className={markdownStyles["markdown"]}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      <StructuredText data={content} />
       <Share slug={slug} name={name} />
       <div className="hidden md:block md:mb-12">
         <Avatar alt={author.name} src={author.avatar} />
