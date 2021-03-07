@@ -1,13 +1,11 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import Head from "../components/Head";
+import Document, { Html, Main, NextScript } from "next/document";
+import Head from "../components/head";
 
 export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="fr">
-        <Head>
-         
-        </Head>
+        <Head/>
         <body className="bg-white text-black dark:bg-black dark:text-white">
           <Main />
           <NextScript />
