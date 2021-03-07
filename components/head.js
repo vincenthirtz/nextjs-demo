@@ -13,7 +13,6 @@ export default function Head() {
                     name="viewport"
                     content="initial-scale=1.0, width=device-width"
                 />
-                {children}
             </NextHead>
         </React.Fragment>
     )
