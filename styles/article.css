@@ -1,0 +1,10 @@
+#article {
+    @apply pb-8;
+}
+#article p {
+  @apply py-4;
+}
+
+  h2 {
+    @apply text-2xl py-3 !important;
+  }

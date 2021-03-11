@@ -120,8 +120,8 @@ export default function Resume({ subscription }) {
                     <Typography variant="h6" component="h1">
                       BAC STG option GSI (acquis)
                     </Typography>
-                    <Typography>Rouen, France</Typography>
-                    <Typography>Lycée Gustave Flaubert</Typography>
+                    <Typography className="p-0">Rouen, France</Typography>
+                    <Typography className="p-0">Lycée Gustave Flaubert</Typography>
                   </Paper>
                 </TimelineContent>
               </TimelineItem>
@@ -152,8 +152,8 @@ export default function Resume({ subscription }) {
                     <Typography variant="h6" component="h1">
                       BTS option SLAM (acquis)
                     </Typography>
-                    <Typography>Le Mesnil-Esnard, France</Typography>
-                    <Typography>La Châtaigneraie</Typography>
+                    <Typography className="p-0">Le Mesnil-Esnard, France</Typography>
+                    <Typography className="p-0">La Châtaigneraie</Typography>
                   </Paper>
                 </TimelineContent>
               </TimelineItem>
@@ -184,8 +184,8 @@ export default function Resume({ subscription }) {
                     <Typography variant="h6" component="h1">
                       Laguerre
                     </Typography>
-                    <Typography>Rouen, France</Typography>
-                    <Typography>Employé de fabrication</Typography>
+                    <Typography className="p-0">Rouen, France</Typography>
+                    <Typography className="p-0">Employé de fabrication</Typography>
                   </Paper>
                 </TimelineContent>
               </TimelineItem>
@@ -216,8 +216,8 @@ export default function Resume({ subscription }) {
                     <Typography variant="h6" component="h1">
                       Docaposte (4 ans et 7 mois)
                     </Typography>
-                    <Typography>Rouen, France</Typography>
-                    <Typography>Développeur Front-End</Typography>
+                    <Typography className="p-0">Rouen, France</Typography>
+                    <Typography className="p-0">Développeur Front-End</Typography>
                   </Paper>
                 </TimelineContent>
               </TimelineItem>
@@ -248,8 +248,8 @@ export default function Resume({ subscription }) {
                     <Typography variant="h6" component="h1">
                       Horoquartz (En poste)
                     </Typography>
-                    <Typography>Lyon, France</Typography>
-                    <Typography>Développeur Front-End</Typography>
+                    <Typography className="p-0">Lyon, France</Typography>
+                    <Typography className="p-0">Développeur Front-End</Typography>
                   </Paper>
                 </TimelineContent>
               </TimelineItem>

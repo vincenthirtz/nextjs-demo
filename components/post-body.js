@@ -1,36 +1,15 @@
 import Avatar from "./avatar";
 import Share from "./share";
 import { StructuredText } from "react-datocms";
+import { Typography } from "@material-ui/core";
+import { DriveEta } from "@material-ui/icons";
 
 export default function PostBody({ name, content, slug, author }) {
   return (
     <div className="max-w-2xl mx-auto">
-      <StructuredText data={content} 
-      renderInlineRecord={({ record }) => {
-        switch (record.__typename) {
-          case "BlogPostRecord":
-            return <a href={`/blog/${record.slug}`}>{record.title}</a>;
-          default:
-            return null;
-        }
-      }}
-      renderLinkToRecord={({ record, children }) => {
-        switch (record.__typename) {
-          case "BlogPostRecord":
-            return <a href={`/blog/${record.slug}`}>{children}</a>;
-          default:
-            return null;
-        }
-      }}
-      renderBlock={({ record }) => {
-        switch (record.__typename) {
-          case "ImageBlockRecord":
-            return <img src={record.image.url} alt={record.image.alt} />;
-          default:
-            return null;
-        }
-      }}
-      />
+      <div id="article">
+        <StructuredText className="p-4" data={content} />
+      </div>
       <Share slug={slug} name={name} />
       <div className="hidden md:block md:mb-12">
         <Avatar alt={author.name} src={author.avatar} />
