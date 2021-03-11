@@ -5,6 +5,10 @@
   @apply py-4;
 }
 
+#article a {
+  @apply no-underline hover:underline;
+}
+
   h2 {
     @apply text-2xl py-3 !important;
   }

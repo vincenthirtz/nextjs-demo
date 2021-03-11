@@ -8,7 +8,7 @@ export default function PostBody({ name, content, slug, author }) {
   return (
     <div className="max-w-2xl mx-auto">
       <div id="article">
-        <StructuredText className="p-4" data={content} />
+        <StructuredText data={content} />
       </div>
       <Share slug={slug} name={name} />
       <div className="hidden md:block md:mb-12">
