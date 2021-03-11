@@ -6,8 +6,8 @@ module.exports = {
   purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      'display': ['Rubik', 'sans-serif'],
-      'body': ['Rubik', 'sans-serif'],
+      'display': 'Rubik, sans-serif',
+      'body': 'Rubik, sans-serif',
     },
     extend: {
       colors: {
