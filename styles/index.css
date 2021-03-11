@@ -5,6 +5,21 @@
 /* purgecss end ignore */
 @tailwind utilities;
 
+@font-face {
+  font-family: "Rubik";
+  src: url("/fonts/Rubik-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Rubik";
+  src: url("/fonts/Rubik-Medium.ttf");
+  font-style: medium;
+  font-weight: 500;
+  font-display: swap;
+}
+
 .toggle-checkbox:checked {
   right: 0;
   border-color: #000000;
