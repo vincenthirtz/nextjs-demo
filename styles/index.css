@@ -20,6 +20,10 @@
   font-display: swap;
 }
 
+body {
+  font-family: "Rubik";
+}
+
 .toggle-checkbox:checked {
   right: 0;
   border-color: #000000;
