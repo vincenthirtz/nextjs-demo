@@ -1,4 +1,3 @@
-import { getNowPlaying } from '../../lib/spotify';
 var SpotifyWebApi = require('spotify-web-api-node');
 
 const client_id = process.env.NEXT_EXAMPLE_SPOTIFY_CLIENTID;
