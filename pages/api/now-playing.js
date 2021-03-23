@@ -8,7 +8,7 @@ export default async (_, res) => {
     const spotifyApi = new SpotifyWebApi({
         clientId: client_id,
         clientSecret: client_secret,
-        redirectUri: 'http://localhost:3000'
+        redirectUri: redirect_uri
     });
 
     if (spotifyApi) {
