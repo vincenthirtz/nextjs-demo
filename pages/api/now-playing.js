@@ -2,6 +2,7 @@ var SpotifyWebApi = require('spotify-web-api-node');
 
 const client_id = process.env.NEXT_EXAMPLE_SPOTIFY_CLIENTID;
 const client_secret = process.env.NEXT_EXAMPLE_SPOTIFY_CLIENTSECRET;
+const redirect_uri = process.env.NEXT_EXAMPLE_SPOTIFY_REDIRECTURI;
 
 export default async (_, res) => {
     const spotifyApi = new SpotifyWebApi({
