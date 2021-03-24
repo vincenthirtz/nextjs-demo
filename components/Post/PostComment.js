@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Avatar from "./avatar";
+import Avatar from "../Avatar/Avatar";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
