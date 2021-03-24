@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import ReCAPTCHA from "react-google-recaptcha";
-import firestore from "../firebase"
+import firestore from "../../firebase"
 import TreeView from '@material-ui/lab/TreeView';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Comment({ comments, slug }) {
+export default function PostComment({ comments, slug }) {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [res, setRes] = useState({});

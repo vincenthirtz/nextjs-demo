@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import cn from "classnames";
-import Alert from "../components/alert";
-import Footer from "../components/footer";
+import Alert from "./Alert";
+import Footer from "./Footer";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import MenuIcon from "@material-ui/icons/Menu";
 import { makeStyles } from "@material-ui/core/styles";

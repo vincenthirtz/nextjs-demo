@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import Head from "next/head";
-import { renderMetaTags, useQuerySubscription } from "react-datocms";
-import Container from "../../components/container";
-import Header from "../../components/header";
-import Layout from "../../components/layout";
-import Comment from "../../components/comment";
-import MoreStories from "../../components/more-stories";
+import { useQuerySubscription } from "react-datocms";
+import Container from "../../components/Container";
+import Header from "../../components/Header";
+import Layout from "../../components/Layout";
+import PostComment from "../../components/Post/PostComment";
+import MoreStories from "../../components/MoreStories";
 import PostBody from "../../components/post-body";
 import PostHeader from "../../components/post-header";
-import SectionSeparator from "../../components/section-separator";
+import SectionSeparator from "../../components/SectionSeparator";
 import { request } from "../../lib/datocms";
 import { responsiveImageFragment } from "../../lib/fragments";
 import firestore from "../../firebase"
@@ -157,7 +157,7 @@ export default function Post({ subscription, preview }) {
           />
         </article>
         <SectionSeparator />
-       <Comment comments={comments} slug={article.slug} />
+       <PostComment comments={comments} slug={article.slug} />
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </Container>
     </Layout>

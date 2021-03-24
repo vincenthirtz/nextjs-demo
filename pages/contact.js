@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Head from "next/head";
-import Intro from "../components/intro";
-import Container from "../components/container";
-import Layout from "../components/layout";
+import Intro from "../components/Intro";
+import Container from "../components/Container";
+import Layout from "../components/Layout";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";

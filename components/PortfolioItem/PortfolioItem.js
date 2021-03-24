@@ -1,6 +1,6 @@
-import CoverImage from "./cover-image";
+import CoverImage from "../CoverImage/CoverImage";
 
-export default function PortfolioPreview({ name, image, description }) {
+export default function PortfolioItem({ name, image, description }) {
   return (
     <div>
       <div className="mb-5">

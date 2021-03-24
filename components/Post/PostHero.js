@@ -1,10 +1,10 @@
-import Avatar from "../components/avatar";
-import Date from "../components/date";
-import CoverImage from "../components/cover-image";
+import Avatar from "../Avatar/Avatar";
+import Date from "../DateFR";
+import CoverImage from "../CoverImage/CoverImage";
 import Link from "next/link";
-import PageViews from "./PageViews/PageViews";
+import PageViews from "../PageViews/PageViews";
 
-export default function HeroPost({
+export default function PostHero({
   titre,
   image,
   date,

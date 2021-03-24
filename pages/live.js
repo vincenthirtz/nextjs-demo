@@ -1,12 +1,12 @@
 import Head from "next/head";
-import Intro from "../components/intro";
-import Container from "../components/container";
-import Layout from "../components/layout";
+import Intro from "../components/Intro";
+import Container from "../components/Container";
+import Layout from "../components/Layout";
 import { makeStyles } from "@material-ui/core/styles";
 import { request } from "../lib/datocms";
 import { useQuerySubscription } from "react-datocms";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     root: {
         flexGrow: 1,
     },

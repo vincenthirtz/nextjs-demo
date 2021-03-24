@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { useQuerySubscription } from "react-datocms";
-import Intro from "../components/intro";
-import Container from "../components/container";
-import Layout from "../components/layout";
+import Intro from "../components/Intro";
+import Container from "../components/Container";
+import Layout from "../components/Layout";
 import { makeStyles } from "@material-ui/core/styles";
-import PortfolioPreview from "../components/portfolio-preview";
+import PortfolioItem from "../components/PortfolioItem/PortfolioItem";
 import { responsiveImageFragment } from "../lib/fragments";
 import { request } from "../lib/datocms";
 
@@ -98,7 +98,7 @@ export default function Portfolio({ subscription }) {
               </h2>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:col-gap-16 lg:col-gap-32 row-gap-20 md:row-gap-32 mb-32">
                 {portfolio.map((port) => (
-                  <PortfolioPreview
+                  <PortfolioItem
                     key={port.name}
                     titre={port.name}
                     image={port.image}

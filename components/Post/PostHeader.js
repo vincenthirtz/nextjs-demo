@@ -1,6 +1,6 @@
-import Date from "../components/date";
-import CoverImage from "../components/cover-image";
-import PostTitle from "../components/post-title";
+import Date from "../DateFR";
+import CoverImage from "../CoverImage/CoverImage";
+import PostTitle from "./PostTitle";
 
 export default function PostHeader({ titre, image, date }) {
   return (
