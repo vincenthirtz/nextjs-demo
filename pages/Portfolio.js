@@ -5,8 +5,8 @@ import Container from "@/components/Container";
 import Layout from "@/components/Layout";
 import { makeStyles } from "@material-ui/core/styles";
 import PortfolioItem from "@/components/PortfolioItem/PortfolioItem";
-import { responsiveImageFragment } from "@/components/fragments";
-import { request } from "@/components/datocms";
+import { responsiveImageFragment } from "@/lib/fragments";
+import { request } from "@/lib/datocms";
 
 const useStyles = makeStyles((theme) => ({
   root: {
