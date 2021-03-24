@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Avatar from "./avatar";
 import Share from "./share";
 import { StructuredText } from "react-datocms";
-import PageViews from "./PageViews";
+import PageViews from "./PageViews/PageViews";
 
 export default function PostBody({ name, content, slug, author }) {
   useEffect(() => {

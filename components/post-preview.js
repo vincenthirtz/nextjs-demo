@@ -2,7 +2,7 @@ import Avatar from "../components/avatar";
 import Date from "../components/date";
 import CoverImage from "./cover-image";
 import Link from "next/link";
-import PageViews from "./PageViews";
+import PageViews from "./PageViews/PageViews";
 
 export default function PostPreview({
   titre,
