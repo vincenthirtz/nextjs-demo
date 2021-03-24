@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { useQuerySubscription } from "react-datocms";
-import Container from "../components/Container";
-import HeroPost from "../components/Post/PostHero";
-import Intro from "../components/Intro";
-import Layout from "../components/Layout";
-import MoreStories from "../components/MoreStories";
-import { request } from "../lib/datocms";
-import { responsiveImageFragment } from "../lib/fragments";
+import Container from "@/components/Container";
+import HeroPost from "@/components/Post/PostHero";
+import Intro from "@/components/Intro";
+import Layout from "@/components/Layout";
+import MoreStories from "@/components/MoreStories";
+import { request } from "@/lib/datocms";
+import { responsiveImageFragment } from "@/lib/fragments";
 
 export async function getStaticProps({ preview }) {
   const graphqlRequest = {

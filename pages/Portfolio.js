@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { useQuerySubscription } from "react-datocms";
-import Intro from "../components/Intro";
-import Container from "../components/Container";
-import Layout from "../components/Layout";
+import Intro from "@/components/Intro";
+import Container from "@/components/Container";
+import Layout from "@/components/Layout";
 import { makeStyles } from "@material-ui/core/styles";
-import PortfolioItem from "../components/PortfolioItem/PortfolioItem";
-import { responsiveImageFragment } from "../lib/fragments";
-import { request } from "../lib/datocms";
+import PortfolioItem from "@/components/PortfolioItem/PortfolioItem";
+import { responsiveImageFragment } from "@/components/fragments";
+import { request } from "@/components/datocms";
 
 const useStyles = makeStyles((theme) => ({
   root: {

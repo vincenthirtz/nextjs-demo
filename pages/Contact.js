@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Head from "next/head";
-import Intro from "../components/Intro";
-import Container from "../components/Container";
-import Layout from "../components/Layout";
+import Intro from "@/components/Intro";
+import Container from "@/components/Container";
+import Layout from "@/components/Layout";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
@@ -14,7 +14,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import emailjs from 'emailjs-com';
 import ReCAPTCHA from "react-google-recaptcha";
-import { request } from "../lib/datocms";
+import { request } from "@/lib/datocms";
 import { useQuerySubscription } from "react-datocms";
 
 const useStyles = makeStyles((theme) => ({

@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import Head from "next/head";
 import { useQuerySubscription } from "react-datocms";
-import Container from "../../components/Container";
-import Header from "../../components/Header";
-import Layout from "../../components/Layout";
-import PostComment from "../../components/Post/PostComment";
-import MoreStories from "../../components/MoreStories";
-import PostBody from "../../components/Post/PostBody";
-import PostHeader from "../../components/Post/PostHeader";
-import SectionSeparator from "../../components/SectionSeparator";
-import { request } from "../../lib/datocms";
-import { responsiveImageFragment } from "../../lib/fragments";
+import Container from "@/components/Container";
+import Header from "@/components/Header";
+import Layout from "@/components/Layout";
+import PostComment from "@/components/Post/PostComment";
+import MoreStories from "@/components/MoreStories";
+import PostBody from "@/components/Post/PostBody";
+import PostHeader from "@/components/Post/PostHeader";
+import SectionSeparator from "@/components/SectionSeparator";
+import { request } from "@/lib/datocms";
+import { responsiveImageFragment } from "@/lib/fragments";
 import firestore from "../../firebase"
 
 export async function getStaticPaths() {

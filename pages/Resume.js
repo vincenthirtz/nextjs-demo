@@ -1,8 +1,8 @@
 import Head from "next/head";
 import cn from "classnames";
-import Intro from "../components/Intro";
-import Container from "../components/Container";
-import Layout from "../components/Layout";
+import Intro from "@/components/Intro";
+import Container from "@/components/Container";
+import Layout from "@/components/Layout";
 import { makeStyles } from "@material-ui/core/styles";
 import Timeline from "@material-ui/lab/Timeline";
 import TimelineItem from "@material-ui/lab/TimelineItem";
@@ -17,7 +17,7 @@ import Typography from "@material-ui/core/Typography";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import BuildIcon from '@material-ui/icons/Build';
 import Button from "@material-ui/core/Button";
-import { request } from "../lib/datocms";
+import { request } from "@/lib/datocms";
 import { useQuerySubscription } from "react-datocms";
 
 const useStyles = makeStyles((theme) => ({
