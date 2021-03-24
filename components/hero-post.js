@@ -2,6 +2,7 @@ import Avatar from "../components/avatar";
 import Date from "../components/date";
 import CoverImage from "../components/cover-image";
 import Link from "next/link";
+import PageViews from "./PageViews";
 
 export default function HeroPost({
   titre,
@@ -28,7 +29,7 @@ export default function HeroPost({
             </Link>
           </h3>
           <div className="mb-4 md:mb-0 text-lg">
-            <Date dateString={date} />
+          <Date dateString={date} /> | <PageViews slug={slug} />
           </div>
         </div>
         <div>

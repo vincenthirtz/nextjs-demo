@@ -2,6 +2,7 @@ import Avatar from "../components/avatar";
 import Date from "../components/date";
 import CoverImage from "./cover-image";
 import Link from "next/link";
+import PageViews from "./PageViews";
 
 export default function PostPreview({
   titre,
@@ -26,7 +27,7 @@ export default function PostPreview({
         </Link>
       </h3>
       <div className="text-lg mb-4">
-        <Date dateString={date} />
+        <Date dateString={date} /> | <PageViews slug={slug} />
       </div>
       <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
       <Avatar alt={author.name} src={author.avatar} />

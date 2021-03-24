@@ -1,10 +1,16 @@
+import { useEffect } from "react";
 import Avatar from "./avatar";
 import Share from "./share";
 import { StructuredText } from "react-datocms";
-import { Typography } from "@material-ui/core";
-import { DriveEta } from "@material-ui/icons";
+import PageViews from "./PageViews";
 
 export default function PostBody({ name, content, slug, author }) {
+  useEffect(() => {
+    fetch(`/api/views/${slug}`, {
+      method: "POST",
+    });
+  }, [slug]);
+
   return (
     <div className="max-w-2xl mx-auto">
       <div id="article">
@@ -25,6 +31,7 @@ export default function PostBody({ name, content, slug, author }) {
           dangerouslySetInnerHTML={{ __html: author.description }}
         />
       </div>
+      <PageViews slug={slug} />
     </div>
   );
 }
