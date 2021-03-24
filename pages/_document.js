@@ -1,5 +1,5 @@
 import Document, { Html, Main, NextScript } from "next/document";
-import CustomHead from "../components/Head";
+import CustomHead from "../components/CustomHead";
 
 export default class MyDocument extends Document {
   render() {
