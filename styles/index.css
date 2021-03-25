@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @import "./article.css";
+@import "./coin.css";
 /* purgecss end ignore */
 @tailwind utilities;
 

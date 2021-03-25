@@ -16,6 +16,7 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import DeveloperBoardIcon from "@material-ui/icons/DeveloperBoard";
 import FaceIcon from "@material-ui/icons/Face";
 import LiveTvIcon from '@material-ui/icons/LiveTv';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
 const useStyles = makeStyles({
   list: {
@@ -101,16 +102,17 @@ export default function Layout({ preview, children }) {
         </Link>
       </List>
       <Divider />
-      {/* <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List> */}
+      <Link href="/coins">
+          <a>
+            <ListItem button key="Coins">
+              <ListItemIcon className="dark:text-white">
+                <AttachMoneyIcon />
+              </ListItemIcon>
+              <ListItemText primary="Coins" />
+            </ListItem>
+          </a>
+        </Link>
+      
     </div>
   );
 
