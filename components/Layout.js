@@ -17,6 +17,7 @@ import DeveloperBoardIcon from "@material-ui/icons/DeveloperBoard";
 import FaceIcon from "@material-ui/icons/Face";
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import PetsIcon from '@material-ui/icons/Pets';
 
 const useStyles = makeStyles({
   list: {
@@ -109,6 +110,16 @@ export default function Layout({ preview, children }) {
                 <AttachMoneyIcon />
               </ListItemIcon>
               <ListItemText primary="Coins" />
+            </ListItem>
+          </a>
+        </Link>
+        <Link href="/cats">
+          <a>
+            <ListItem button key="Cats">
+              <ListItemIcon className="dark:text-white">
+                <PetsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Cats" />
             </ListItem>
           </a>
         </Link>
