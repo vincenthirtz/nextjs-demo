@@ -49,7 +49,7 @@ export default function Cats() {
                     setCats(data);
                 }).catch(err => console.log(err))
         }
-    }, [search])
+    }, [search, page, rowsPerPage])
 
     const handleChange = e => {
         setSearch(e.target.value)
