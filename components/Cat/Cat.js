@@ -67,7 +67,6 @@ const Cat = ({ filteredCats, handleChangePage, handleChangeRowsPerPage, rowsPerP
                             <TableCell>Race</TableCell>
                             <TableCell align="right">adaptability</TableCell>
                             <TableCell align="right">affection_level</TableCell>
-                            <TableCell align="right">cat_friendly</TableCell>
                             <TableCell align="right">child_friendly</TableCell>
                             <TableCell align="right">dog_friendly</TableCell>
                             <TableCell align="right">energy_level</TableCell>
@@ -85,10 +84,10 @@ const Cat = ({ filteredCats, handleChangePage, handleChangeRowsPerPage, rowsPerP
                             <TableCell align="right">stranger_friendly</TableCell>
                             <TableCell align="right">suppressed_tail</TableCell>
                             <TableCell align="right">temperament</TableCell>
-                            <TableCell align="right">wikipedia</TableCell>
                             <TableCell align="right">vocalisation</TableCell>
                             <TableCell align="right">weight imperial</TableCell>
                             <TableCell align="right">weight metric</TableCell>
+                            <TableCell align="right">wikipedia</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -101,7 +100,6 @@ const Cat = ({ filteredCats, handleChangePage, handleChangeRowsPerPage, rowsPerP
                                 </TableCell>
                                 <TableCell align="right">{data.adaptability}</TableCell>
                                 <TableCell align="right">{data.affection_level}</TableCell>
-                                <TableCell align="right">{data.cat_friendly}</TableCell>
                                 <TableCell align="right">{data.child_friendly}</TableCell>
                                 <TableCell align="right">{data.dog_friendly}</TableCell>
                                 <TableCell align="right">{data.energy_level}</TableCell>
@@ -119,10 +117,10 @@ const Cat = ({ filteredCats, handleChangePage, handleChangeRowsPerPage, rowsPerP
                                 <TableCell align="right">{data.stranger_friendly}</TableCell>
                                 <TableCell align="right">{data.suppressed_tail}</TableCell>
                                 <TableCell align="right">{data.temperament}</TableCell>
-                                <TableCell align="right"><a target="_blank" href={data.wikipedia_url}>Lien</a></TableCell>
                                 <TableCell align="right">{data.vocalisation}</TableCell>
                                 <TableCell align="right">{data?.weight?.imperial}</TableCell>
                                 <TableCell align="right">{data?.weight?.metric}</TableCell>
+                                <TableCell align="right"><a target="_blank" href={data.wikipedia_url}>Lien</a></TableCell>
                             </TableRow>)
                         })}
                     </TableBody>
