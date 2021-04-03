@@ -5,13 +5,14 @@ import Container from "@/components/Container";
 import Layout from "@/components/Layout";
 import Cat from "@/components/Cat/Cat";
 import TextField from '@material-ui/core/TextField';
-
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 export default function Cats() {
     const [cats, setCats] = useState([]);
     const [search, setSearch] = useState('');
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(25);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -40,6 +41,7 @@ export default function Cats() {
                 .then(res => res.json())
                 .then(data => {
                     setCats(data);
+                    setIsLoading(false)
                 }).catch(err => console.log(err))
         } else {
             fetch(`https://api.thecatapi.com/v1/breeds?page=${page}&limit=${rowsPerPage}`
@@ -47,23 +49,37 @@ export default function Cats() {
                 .then(res => res.json())
                 .then(data => {
                     setCats(data);
+                    setIsLoading(false)
                 }).catch(err => console.log(err))
         }
-    }, [search, page, rowsPerPage])
+    }, [search, page, rowsPerPage, isLoading])
 
     const handleChange = e => {
         setSearch(e.target.value)
     }
 
+    const getImage = idBreed => {
+        if (idBreed) {
+            return fetch(`https://api.thecatapi.com/v1/images/${idBreed}`
+                , options)
+                .then(res => res.json())
+                .then(image => image.url)
+                .catch(err => console.log(err))
+        }
+    }
+
     const filteredCats = React.useMemo(
         () =>
             cats.filter((cat) => {
+                if (cat.reference_image_id && !cat?.image?.url && !cat.searchPhoto) {
+                    getImage(cat.reference_image_id).then(response => {
+                        cat.searchPhoto = response;
+                    })
+                }
                 return cat.name.toLowerCase().includes(search.toLowerCase())
             }),
-        [search, cats]
+        [search, page, rowsPerPage, isLoading]
     );
-
-    console.log('filteredCats ', filteredCats)
 
     return (
         <>
@@ -79,7 +95,8 @@ export default function Cats() {
                         <form className="coin-container">
                             <TextField fullWidth id="standard-basic" className="coin-input" label="Rechercher" onChange={handleChange} />
                         </form>
-                        {filteredCats.length > 0 &&
+                        {isLoading && <LinearProgress />}
+                        {!isLoading && filteredCats.length > 0 &&
                             <Cat filteredCats={filteredCats} 
                             handleChangePage={handleChangePage} 
                             handleChangeRowsPerPage={handleChangeRowsPerPage} 
@@ -87,7 +104,7 @@ export default function Cats() {
                             page={page}
                             />
                         }
-                        {filteredCats.length === 0 && "Aucuns résultats"}
+                        {!isLoading && filteredCats.length === 0 && "Aucuns résultats"}
                     </>
                 </Container>
             </Layout>

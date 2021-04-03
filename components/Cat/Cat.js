@@ -26,37 +26,6 @@ const Cat = ({ filteredCats, handleChangePage, handleChangeRowsPerPage, rowsPerP
     }, [filteredCats])
 
     const classes = useStyles();
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "text/json");
-    myHeaders.append("x-api-key", process.env.NEXT_EXAMPLE_CAT_API_KEY);
-    var options = {
-        method: 'GET',
-        headers: myHeaders,
-        mode: 'cors',
-        cache: 'default'
-    };
-
-    useEffect(() => {
-        if (cats && cats.length > 0) {
-            cats.map(cat => {
-                if (cat.reference_image_id && !cat?.image?.url && !cat.searchPhoto) {
-                    getImage(cat.reference_image_id).then(response => {
-                        cat.searchPhoto = response;
-                    })
-                }
-            })
-        }
-    }, [cats])
-
-    const getImage = idBreed => {
-        if (idBreed) {
-            return fetch(`https://api.thecatapi.com/v1/images/${idBreed}`
-                , options)
-                .then(res => res.json())
-                .then(image => image.url)
-                .catch(err => console.log(err))
-        }
-    }
 
     return (
         <div className="coin-container">
