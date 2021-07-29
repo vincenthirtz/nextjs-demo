@@ -232,6 +232,38 @@ export default function Resume({ subscription }) {
                   </Typography>
                 </TimelineOppositeContent>
                 <TimelineSeparator>
+                  <TimelineDot>
+                    <LaptopMacIcon />
+                  </TimelineDot>
+                  <TimelineConnector />
+                </TimelineSeparator>
+                <TimelineContent>
+                  <Paper
+                    elevation={3}
+                    className={cn(
+                      "dark:bg-black dark:text-white p-4",
+                      classes.paper
+                    )}
+                  >
+                    <Typography variant="h6" component="h1">
+                      Horoquartz (10 mois)
+                    </Typography>
+                    <Typography className="p-0">Lyon, France</Typography>
+                    <Typography className="p-0">Développeur Front-End</Typography>
+                  </Paper>
+                </TimelineContent>
+              </TimelineItem>
+              <TimelineItem>
+                <TimelineOppositeContent>
+                  <Typography
+                    className="dark:text-white"
+                    variant="body2"
+                    color="textSecondary"
+                  >
+                    Juillet 2021
+                  </Typography>
+                </TimelineOppositeContent>
+                <TimelineSeparator>
                   <TimelineDot color="primary">
                     <LaptopMacIcon />
                   </TimelineDot>
@@ -246,7 +278,7 @@ export default function Resume({ subscription }) {
                     )}
                   >
                     <Typography variant="h6" component="h1">
-                      Horoquartz (En poste)
+                      Sapiendo (En poste)
                     </Typography>
                     <Typography className="p-0">Lyon, France</Typography>
                     <Typography className="p-0">Développeur Front-End</Typography>
