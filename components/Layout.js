@@ -130,7 +130,7 @@ export default function Layout({ preview, children }) {
   return (
     <>
       <div className="min-h-screen">
-        <Alert preview={preview} />
+        {/* <Alert preview={preview} /> */}
         <div style={{ padding: "20px 0 0 20px", cursor: "pointer" }}>
           <MenuIcon onClick={() => toggleDrawer(true)} />
           <SwipeableDrawer
