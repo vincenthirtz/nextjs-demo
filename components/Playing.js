@@ -1,5 +1,44 @@
-export default function Playing({ song }) {
-    console.log("song ", song)
+import React, { useState, useEffect } from "react";
+import { getNowPlaying } from "@/lib/now-playing";
+
+export default function Playing() {
+  const [isPlaying, setIsPlaying] = useState(null);
+  const [title, setTitle] = useState(null);
+  const [artist, setArtist] = useState(null);
+  const [album, setAlbum] = useState(null);
+  const [albumImageUrl, setAlbumImageUrl] = useState(null);
+  const [songUrl, setSongUrl] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await getNowPlaying();
+
+        console.log("response ", response);
+
+        if (response.status === 204 || response.status > 400) {
+          setIsPlaying(false);
+        }
+
+        const song = await response.json();
+
+        if (song.item === null) {
+          setIsPlaying(false);
+        }
+
+        setIsPlaying(song.is_playing);
+        setTitle(song.item.name);
+        setArtist(song.item.artists.map((_artist) => _artist.name).join(", "));
+        setAlbum(song.item.album.name);
+        setAlbumImageUrl(song.item.album.images[0].url);
+        setSongUrl(song.item.external_urls.spotify);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchData();
+  }, []);
+
   return (
     <section>
       <div className="flex flex-row-reverse sm:flex-row mb-8 space-x-0 sm:space-x-2 w-full">
@@ -11,16 +50,14 @@ export default function Playing({ song }) {
         </svg>
 
         <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
-          <div
-            className="inline-flex flex-col sm:flex-row w-full max-w-full truncate"
-          >
-            {song?.songUrl ? (
+          <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
+            {songUrl ? (
               <a
-                href="{song.songUrl}"
+                href="{songUrl}"
                 cssclassNamees="{'text-gray-800 dark:text-gray-200 font-medium  max-w-max truncate'}"
-                ariaLabel="{song.title}"
+                ariaLabel="{title}"
               >
-                {$song.title}
+                {title}
               </a>
             ) : (
               <p className="text-gray-800 dark:text-gray-200 font-medium">
@@ -33,9 +70,9 @@ export default function Playing({ song }) {
               {" – "}
             </span>
             <p className="text-gray-500 dark:text-gray-300 max-w-max truncate">
-              {song?.artist ?? "Spotify"}
+              {artist ?? "Spotify"}
             </p>
-            {song?.isPlaying && (
+            {isPlaying && (
               <div className="ml-2 flex flex-row justify-center items-center playing"></div>
             )}
           </div>
