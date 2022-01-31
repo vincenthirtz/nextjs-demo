@@ -7,6 +7,46 @@ import Layout from "@/components/Layout";
 import MoreStories from "@/components/MoreStories";
 import { request } from "@/lib/datocms";
 import { responsiveImageFragment } from "@/lib/fragments";
+import { getNowPlaying } from "@/lib/now-playing";
+import Playing from "@/components/Playing";
+
+export async function getData() {
+  const response = await getNowPlaying();
+
+  console.log("response ", response)
+
+  if (response.status === 204 || response.status > 400) {
+    return {
+      status: 200,
+      body: { isPlaying: false },
+    };
+  }
+
+  const song = await response.json();
+
+  if (song.item === null) {
+    return {
+      status: 200,
+      body: { isPlaying: false },
+    };
+  }
+
+  const isPlaying = song.is_playing;
+  const title = song.item.name;
+  const artist = song.item.artists.map((_artist) => _artist.name).join(", ");
+  const album = song.item.album.name;
+  const albumImageUrl = song.item.album.images[0].url;
+  const songUrl = song.item.external_urls.spotify;
+
+  console.log("isPlaying ", isPlaying);
+  console.log("title ", title);
+  console.log("artist ", artist);
+  console.log("album ", album);
+  console.log("albumImageUrl ", albumImageUrl);
+  console.log("songUrl ", songUrl);
+
+  return song;
+}
 
 export async function getStaticProps({ preview }) {
   const graphqlRequest = {
@@ -80,6 +120,13 @@ export default function Index({ subscription }) {
     data: { allArticles, _site },
   } = useQuerySubscription(subscription);
 
+  let song;
+
+  getData().then(data => {
+    console.log("data ", data)
+    song = data;
+  })
+
   const heroPost = allArticles[0];
   const morePosts = allArticles.slice(1);
   const { globalSeo } = _site;
@@ -97,6 +144,7 @@ export default function Index({ subscription }) {
         </Head>
         <Container>
           <Intro />
+          <Playing song={song} />
           {heroPost && (
             <HeroPost
               titre={heroPost.titre}
