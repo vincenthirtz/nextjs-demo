@@ -13,19 +13,13 @@ export default function Playing() {
     async function fetchData() {
       try {
         const response = await getNowPlaying();
-
-        console.log("response ", response);
-
         if (response.status === 204 || response.status > 400) {
           setIsPlaying(false);
         }
-
         const song = await response.json();
-
         if (song.item === null) {
           setIsPlaying(false);
         }
-
         setIsPlaying(song.is_playing);
         setTitle(song.item.name);
         setArtist(song.item.artists.map((_artist) => _artist.name).join(", "));
