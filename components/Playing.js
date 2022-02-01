@@ -5,7 +5,7 @@ export default function Playing() {
   const [isPlaying, setIsPlaying] = useState(null);
   const [title, setTitle] = useState(null);
   const [artist, setArtist] = useState(null);
-  const [album, setAlbum] = useState(null);
+  const [, setAlbum] = useState(null);
   const [albumImageUrl, setAlbumImageUrl] = useState(null);
   const [songUrl, setSongUrl] = useState(null);
 
@@ -44,10 +44,10 @@ export default function Playing() {
         </svg>
 
         <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
-          {<img src={albumImageUrl} width="25" height="25" /> ?? "No cover"}
+          {isPlaying && <img src={albumImageUrl} width="25" height="25" /> ?? "No cover"}
 
           <span className="mx-2 text-gray-500 dark:text-gray-300 hidden sm:block">
-            {" – "}
+            {isPlaying && " – "}
           </span>
           <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
             {songUrl ? (
@@ -74,7 +74,7 @@ export default function Playing() {
             {isPlaying && (
               <div class="ml-2 flex flex-row justify-center items-center playing">
                 {[1, 2, 3, 4, 5, 6].map((index) => (
-                  <span class="crest"></span>
+                  <span key={index} class="crest"></span>
                 ))}
               </div>
             )}
