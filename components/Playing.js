@@ -44,11 +44,14 @@ export default function Playing() {
         </svg>
 
         <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
-          {songUrl && <img src={albumImageUrl} width="25" height="25" /> ?? "No cover"}
+          {songUrl && <img src={albumImageUrl} width="25" height="25" />}
 
-          <span className="mx-2 text-gray-500 dark:text-gray-300 hidden sm:block">
-            {songUrl && " – "}
-          </span>
+          {songUrl && (
+            <span className="mx-2 text-gray-500 dark:text-gray-300 hidden sm:block">
+              " – "
+            </span>
+          )}
+
           <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
             {songUrl ? (
               <a
