@@ -63,3 +63,61 @@ body {
   width: 32px;
   height: 32px;
 }
+
+.crest {
+  width: 3px;
+  height: 20px;
+  margin-right: 3px;
+  background: #65696d;
+  border-radius: 2px;
+}
+
+.crest:hover {
+  background: #19af55;
+}
+
+.crest:nth-child(1) {
+  animation: playing 700ms infinite ease;
+}
+
+.crest:nth-child(2) {
+  animation: playing 1400ms infinite ease;
+}
+
+.crest:nth-child(3) {
+  animation: playing 350ms infinite ease;
+}
+
+.crest:nth-child(4) {
+  animation: playing 550ms infinite ease;
+}
+
+.crest:nth-child(5) {
+  animation: playing 450ms infinite ease;
+}
+
+.crest:nth-child(5) {
+  animation: playing 850ms infinite ease;
+}
+
+.crest:nth-child(6) {
+  animation: playing 650ms infinite ease;
+}
+
+@keyframes playing {
+  0% {
+    height: 3px;
+  }
+  25% {
+    height: 10px;
+  }
+  50% {
+    height: 15px;
+  }
+  75% {
+    height: 17px;
+  }
+  to {
+    height: 3px;
+  }
+}

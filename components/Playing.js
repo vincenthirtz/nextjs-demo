@@ -44,12 +44,17 @@ export default function Playing() {
         </svg>
 
         <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
+          {<img src={albumImageUrl} width="25" height="25" /> ?? "No cover"}
+
+          <span className="mx-2 text-gray-500 dark:text-gray-300 hidden sm:block">
+            {" – "}
+          </span>
           <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
             {songUrl ? (
               <a
-                href="{songUrl}"
+                href={songUrl}
                 cssclassNamees="{'text-gray-800 dark:text-gray-200 font-medium  max-w-max truncate'}"
-                ariaLabel="{title}"
+                ariaLabel={title}
               >
                 {title}
               </a>
@@ -67,7 +72,11 @@ export default function Playing() {
               {artist ?? "Spotify"}
             </p>
             {isPlaying && (
-              <div className="ml-2 flex flex-row justify-center items-center playing"></div>
+              <div class="ml-2 flex flex-row justify-center items-center playing">
+                {[1, 2, 3, 4, 5, 6].map((index) => (
+                  <span class="crest"></span>
+                ))}
+              </div>
             )}
           </div>
         </div>
