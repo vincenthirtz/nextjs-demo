@@ -28,6 +28,7 @@ export default function Playing() {
         setSongUrl(song.item.external_urls.spotify);
       } catch (err) {
         console.log(err);
+        setIsPlaying(false);
       }
     }
     fetchData();
@@ -91,9 +92,9 @@ export default function Playing() {
               {artist ?? "Spotify"}
             </p>
             {isPlaying && (
-              <div class="ml-2 flex flex-row justify-center items-center playing">
+              <div className="ml-2 flex flex-row justify-center items-center playing">
                 {[1, 2, 3, 4, 5, 6].map((index) => (
-                  <span key={index} class="crest"></span>
+                  <span key={index} className="crest"></span>
                 ))}
               </div>
             )}

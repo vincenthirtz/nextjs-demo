@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useQuerySubscription } from "react-datocms";
 import Container from "@/components/Container";
-import HeroPost from "@/components/Post/PostHero";
 import Intro from "@/components/Intro";
 import Layout from "@/components/Layout";
 import MoreStories from "@/components/MoreStories";
@@ -81,9 +80,7 @@ export default function Index({ subscription }) {
     data: { allArticles, _site },
   } = useQuerySubscription(subscription);
 
-
-  const heroPost = allArticles[0];
-  const morePosts = allArticles.slice(1);
+  const posts = allArticles;
   const { globalSeo } = _site;
 
   return (
@@ -100,17 +97,7 @@ export default function Index({ subscription }) {
         <Container>
           <Intro />
           <Playing />
-          {heroPost && (
-            <HeroPost
-              titre={heroPost.titre}
-              image={heroPost.image}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              excerpt={heroPost.resume}
-            />
-          )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          {posts.length > 0 && <MoreStories posts={posts} />}
         </Container>
       </Layout>
     </>
