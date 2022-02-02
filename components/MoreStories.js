@@ -28,30 +28,21 @@ export default function MoreStories({ posts }) {
                 >
                   <h1 className="text-lg">
                     <Link as={`/posts/${post.slug}`} href="/posts/[slug]">
-                      <a classNameName="hover:underline">{post.titre}</a>
+                      <a className="hover:underline">{post.titre}</a>
                     </Link>
                   </h1>
-                  <p className="text-grey-darker text-sm">
-                    <Date dateString={post.date} />
-                  </p>
                 </header>
-
-                {/* <div className="flex items-center justify-between leading-none p-2 md:p-4">
-                {post.resume}
-                </div> */}
 
                 <footer className="flex items-center justify-between leading-none p-2 md:p-4">
                   <a
-                    className="flex items-center no-underline hover:underline text-black"
-                    href="#"
+                    className="flex items-center no-underline hover:underline"
+                    target={"_blank"}
+                    href="https://www.linkedin.com/in/hirtzvincent/"
                   >
                     <p className="ml-2 text-sm">
-                      {/* <p classNameName="text-lg leading-relaxed mb-4">
-                        {post.resume}
-                      </p> */}
                       <Avatar
                         className="block rounded-full"
-                        alt={post.author.name}
+                        alt={<Date dateString={post.date} />}
                         src={post.author.avatar}
                       />
                     </p>
