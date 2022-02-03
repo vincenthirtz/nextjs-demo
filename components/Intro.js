@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import GitHubIcon from "@material-ui/icons/GitHub";
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import { useTheme } from "next-themes";
@@ -37,21 +32,7 @@ export default function Intro() {
           </div>
           <Brightness3Icon />
         </div>
-        <a href="https://linkedin.com/in/hirtzvincent/" target="_blank">
-          <LinkedInIcon />
-        </a>
-        <a href="https://www.facebook.com/foetusIer/" target="_blank">
-          <FacebookIcon />
-        </a>
-        <a href="https://instagram.com/urbex_pop_art/" target="_blank">
-          <InstagramIcon />
-        </a>
-        <a href="https://twitter.com/alukaard76" target="_blank">
-          <TwitterIcon />
-        </a>
-        <a href="https://github.com/vincenthirtz" target="_blank">
-          <GitHubIcon />
-        </a>
+       
       </h4>
     </section>
   );

@@ -48,7 +48,7 @@ export default function Playing() {
           <svg
             stroke="currentColor"
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             role="img"
             viewBox="0 0 24 24"
             className ="group-hover:text-green-400"
@@ -73,8 +73,8 @@ export default function Playing() {
             {songUrl ? (
               <a
                 href={songUrl}
-                cssclassNamees="{'text-gray-800 dark:text-gray-200 font-medium  max-w-max truncate'}"
-                ariaLabel={title}
+                className="{'text-gray-800 dark:text-gray-200 font-medium  max-w-max truncate'}"
+                aria-label={title}
               >
                 {title}
               </a>

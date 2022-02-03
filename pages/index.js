@@ -52,6 +52,16 @@ export async function getStaticProps({ preview }) {
             }
           }
         }
+        allPortfolios {
+          description
+          name
+          link
+            image {
+              responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
+                ...responsiveImageFragment
+              }
+            }
+          }
       }
 
       ${responsiveImageFragment}
@@ -77,9 +87,10 @@ export async function getStaticProps({ preview }) {
 
 export default function Index({ subscription }) {
   const {
-    data: { allArticles, _site },
+    data: { allArticles, allPortfolios, _site },
   } = useQuerySubscription(subscription);
 
+  const portfolio = allPortfolios;
   const posts = allArticles;
   const { globalSeo } = _site;
 
@@ -97,7 +108,14 @@ export default function Index({ subscription }) {
         <Container>
           <Intro />
           <Playing />
+          <h1 className="text-xl md:text-2xl font-bold tracking-tight md:tracking-tighter leading-tight">
+            Articles
+          </h1>
           {posts.length > 0 && <MoreStories posts={posts} />}
+          <h1 className="text-xl md:text-2xl font-bold tracking-tight md:tracking-tighter leading-tight">
+            Projets
+          </h1>
+          {portfolio.length > 0 && <MoreStories posts={portfolio} />}
         </Container>
       </Layout>
     </>
