@@ -59,10 +59,19 @@ export default function Footer() {
         <li className="social-icon__item">
           <a
             className="social-icon__link"
-            href=" https://discord.gg/Nt2TpvajbA"
+            href="https://discord.gg/Nt2TpvajbA"
             target={"_blank"}
           >
             <ion-icon name="logo-discord"></ion-icon>
+          </a>
+        </li>
+        <li className="social-icon__item">
+          <a
+            className="social-icon__link"
+            href="https://www.buymeacoffee.com/vincenthirtz"
+            target={"_blank"}
+          >
+            <ion-icon name="cafe-outline"></ion-icon>
           </a>
         </li>
         <li className="social-icon__item">
