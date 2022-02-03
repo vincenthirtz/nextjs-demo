@@ -5,69 +5,11 @@ import Intro from "@/components/Intro";
 import Layout from "@/components/Layout";
 import MoreStories from "@/components/MoreStories";
 import { request } from "@/lib/datocms";
-import { responsiveImageFragment } from "@/lib/fragments";
+import { graphqlRequestHome } from "@/lib/requests";
 import Playing from "@/components/Playing";
 
 export async function getStaticProps({ preview }) {
-  const graphqlRequest = {
-    query: `
-      {
-        _site {
-          globalSeo {
-            siteName
-            titleSuffix
-            twitterAccount
-            fallbackSeo {
-              title
-              twitterCard
-              description
-            }
-          }
-          faviconMetaTags {
-            tag
-            content
-            attributes
-          }
-        }
-        allArticles(orderBy: date_DESC) {
-          titre
-          slug
-          date
-          resume
-          structuredTextContent {
-            value
-          }
-          author {
-            name
-            description
-            avatar  {
-              responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
-                ...responsiveImageFragment
-              }
-          }
-        }
-          image {
-            responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
-              ...responsiveImageFragment
-            }
-          }
-        }
-        allPortfolios {
-          description
-          name
-          link
-            image {
-              responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
-                ...responsiveImageFragment
-              }
-            }
-          }
-      }
-
-      ${responsiveImageFragment}
-    `,
-    preview,
-  };
+  const graphqlRequest = graphqlRequestHome(preview);
 
   return {
     props: {

@@ -56,6 +56,15 @@ export default function Footer() {
             <ion-icon name="mail-outline"></ion-icon>
           </a>
         </li>
+        <li className="social-icon__item">
+          <a
+            className="social-icon__link"
+            href="https://vincenthirtz.fr/sitemap-0.xml"
+            target={"_blank"}
+          >
+            <ion-icon name="logo-rss"></ion-icon>
+          </a>
+        </li>
       </ul>
       <ul className="menu">
         <Link href="/">
