@@ -4,7 +4,7 @@ import Footer from "./Footer";
 export default function Layout({ preview, children }) {
   return (
     <>
-      <div className="min-h-screen mb-[200px]">
+      <div className="min-h-screen" style={{marginBottom: "200px"}}>
         <main>{children}</main>
       </div>
       <Footer />
