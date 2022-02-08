@@ -46,7 +46,7 @@ export default function MoreStories({ posts }) {
                     target={"_blank"}
                     href={post?.author?.avatar ? "https://www.linkedin.com/in/hirtzvincent/" : post.link}
                   >
-                    <p className="ml-2 text-sm">
+                    <div className="ml-2 text-sm">
                       <Avatar
                         className="block rounded-full"
                         alt={
@@ -58,7 +58,7 @@ export default function MoreStories({ posts }) {
                         }
                         src={post?.author?.avatar ? post.author.avatar : null}
                       />
-                    </p>
+                    </div>
                   </a>
                   <span className="no-underline text-grey-darker hover:text-red-dark">
                     {post?.author?.avatar && <PageViews slug={post.slug} />}

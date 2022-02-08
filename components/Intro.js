@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Brightness3Icon from '@material-ui/icons/Brightness3';
-import WbSunnyIcon from '@material-ui/icons/WbSunny';
+import Brightness3Icon from "@material-ui/icons/Brightness3";
+import WbSunnyIcon from "@material-ui/icons/WbSunny";
 import { useTheme } from "next-themes";
 
 export default function Intro() {
   const { theme, setTheme } = useTheme();
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState();
 
   const handleChange = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
   useEffect(() => {
-    setChecked(theme === "light" ? false : true);
+    if (theme) {
+      setChecked(theme === "light" ? false : true);
+    } else {
+      setChecked(false);
+    }
   }, [theme]);
 
   return (
@@ -27,12 +31,21 @@ export default function Intro() {
         <div style={{ display: "flex", alignItems: "center" }}>
           <WbSunnyIcon />
           <div className="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
-            <input type="checkbox" checked={checked} onChange={handleChange} name="toggle" id="toggle" className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
-            <label htmlFor="toggle" className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+            <input
+              type="checkbox"
+              checked={checked}
+              onChange={handleChange}
+              name="toggle"
+              id="toggle"
+              className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
+            />
+            <label
+              htmlFor="toggle"
+              className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"
+            ></label>
           </div>
           <Brightness3Icon />
         </div>
-       
       </h4>
     </section>
   );

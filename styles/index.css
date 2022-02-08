@@ -237,3 +237,12 @@ body {
     background-positon-x: 0px;
   }
 }
+
+.qrcode {
+  transition: transform .2s; 
+}
+
+.qrcode:hover {
+  transform: scale(6);
+  transform-origin: -30% 100%;
+}

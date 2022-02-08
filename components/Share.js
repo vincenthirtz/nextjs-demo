@@ -191,8 +191,8 @@ export default function Share({ name, slug }) {
         <RedditShareButton
           url={shareUrl}
           title={title}
-          widthWidth={660}
-          widthHeight={460}
+          width={660}
+          height={460}
           className="Demo__some-network__share-button"
         >
           <RedditIcon size={32} round />
@@ -319,8 +319,8 @@ export default function Share({ name, slug }) {
         <HatenaShareButton
           url={shareUrl}
           title={title}
-          widthWidth={660}
-          widthHeight={460}
+          width={660}
+          height={460}
           className="Demo__some-network__share-button"
         >
           <HatenaIcon size={32} round />

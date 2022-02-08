@@ -107,7 +107,10 @@ export default function Footer() {
           </li>
         </Link>
       </ul>
-      <p>&copy;2022 Vincent Hirtz | French frontend developer</p>
+      <p className="flex flex-wrap -mx-1 lg:-mx-4">
+        &copy;2022 Vincent Hirtz | French frontend developer |
+        <img src="/qrcode.png" className="qrcode w-8 h-8 mx-1.5" alt="qrcode vincenthirtz.fr" />
+      </p>
       <script
         type="module"
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
