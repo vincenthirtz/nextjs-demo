@@ -109,7 +109,7 @@ export default function Footer() {
       </ul>
       <p className="flex flex-wrap -mx-1 lg:-mx-4">
         &copy;2022 Vincent Hirtz | French frontend developer |
-        <img src="/qrcode.png" className="qrcode w-8 h-8 mx-1.5" alt="qrcode vincenthirtz.fr" />
+        <img src="/qrcode.png" style={{margin: "0 10px"}} className="qrcode w-8 h-8" alt="qrcode vincenthirtz.fr" />
       </p>
       <script
         type="module"
