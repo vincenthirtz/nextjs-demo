@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Head from "next/head";
 import Intro from "@/components/Intro";
 import Container from "@/components/Container";
-import Layout from "@/components/Layout";
+import Layout from "@/components/Layout/Layout";
 import Cat from "@/components/Cat/Cat";
 import TextField from '@material-ui/core/TextField';
 import LinearProgress from '@material-ui/core/LinearProgress';

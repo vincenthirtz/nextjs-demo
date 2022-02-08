@@ -2,7 +2,7 @@ import Head from "next/head";
 import cn from "classnames";
 import Intro from "@/components/Intro";
 import Container from "@/components/Container";
-import Layout from "@/components/Layout";
+import Layout from "@/components/Layout/Layout";
 import { makeStyles } from "@material-ui/core/styles";
 import Timeline from "@material-ui/lab/Timeline";
 import TimelineItem from "@material-ui/lab/TimelineItem";
