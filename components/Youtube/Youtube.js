@@ -3,6 +3,7 @@ import React from "react";
 const YoutubeEmbed = ({ embedId }) => (
   <div className="video-responsive">
     <iframe
+      loading="lazy"
       width="100%"
       height="400"
       src={`https://www.youtube.com/embed/${embedId}`}
