@@ -68,6 +68,15 @@ export default function Footer() {
         <li className="social-icon__item">
           <a
             className="social-icon__link"
+            href="https://join.slack.com/t/studio-vh/shared_invite/zt-tv03kr6r-rc7KmjZ56dYi~OrRJQcpcw"
+            target={"_blank"}
+          >
+            <ion-icon name="logo-slack"></ion-icon>
+          </a>
+        </li>
+        <li className="social-icon__item">
+          <a
+            className="social-icon__link"
             href="https://www.buymeacoffee.com/vincenthirtz"
             target={"_blank"}
           >

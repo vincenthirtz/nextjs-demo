@@ -3,6 +3,7 @@
 @tailwind components;
 @import "./article.css";
 @import "./coin.css";
+@import "./tooltip.css";
 /* purgecss end ignore */
 @tailwind utilities;
 
