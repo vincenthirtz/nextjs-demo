@@ -66,7 +66,7 @@ export default function Intro({ dataSlack, dataUserSlack }) {
             <ion-icon name="radio-button-off-outline"></ion-icon>
           )}{" "}
           sur{" "}
-          <a href="https://join.slack.com/t/studio-vh/shared_invite/zt-tv03kr6r-rc7KmjZ56dYi~OrRJQcpcw">
+          <a href="https://join.slack.com/t/studio-vh/shared_invite/zt-tv03kr6r-rc7KmjZ56dYi~OrRJQcpcw" target={"_blank"}>
             Slack
           </a>
         </div>
