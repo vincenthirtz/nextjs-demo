@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Intro from "@/components/Intro";
+import Title from "@/components/Title";
 import Container from "@/components/Container";
 import Layout from "@/components/Layout/Layout";
 import { makeStyles } from "@material-ui/core/styles";
@@ -71,7 +71,7 @@ export default function Live({ subscription }) {
                     <meta name="description" content={globalSeo.fallbackSeo.description}></meta>
                 </Head>
                 <Container>
-                    <Intro />
+                    <Title />
                     <div className={classes.root}>
                         <iframe
                             src={`https://player.twitch.tv/?channel=${process.env.NEXT_EXAMPLE_CHANNEL_TWITCH}&parent=${process.env.NEXT_EXAMPLE_SITE_URL}`}

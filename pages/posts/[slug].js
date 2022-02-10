@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import { useQuerySubscription } from "react-datocms";
 import Container from "@/components/Container";
-import Header from "@/components/Layout/Header";
+import Title from "@/components/Title";
 import Layout from "@/components/Layout/Layout";
 import PostComment from "@/components/Post/PostComment";
 import MoreStories from "@/components/More/MoreStories";
@@ -70,7 +70,7 @@ export default function Post({ subscription, preview }) {
         ></meta>
       </Head>
       <Container>
-        <Header />
+        <Title />
         <article>
           <PostHeader
             titre={article.titre}

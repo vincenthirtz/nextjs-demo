@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Head from "next/head";
-import Intro from "@/components/Intro";
+import Title from "@/components/Title";
 import Container from "@/components/Container";
 import Layout from "@/components/Layout/Layout";
 import Coin from "@/components/Coin/Coin";
@@ -37,7 +37,7 @@ export default function Coins() {
                     <meta name="description" content={""}></meta>
                 </Head>
                 <Container>
-                    <Intro />
+                    <Title />
                     <>
                         <form className="coin-container">
                             <TextField fullWidth id="standard-basic" className="coin-input" label="Rechercher" onChange={handleChange} />

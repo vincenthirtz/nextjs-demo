@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Head from "next/head";
-import Intro from "@/components/Intro";
+import Title from "@/components/Title";
 import Container from "@/components/Container";
 import Layout from "@/components/Layout/Layout";
 import { useFormik } from "formik";
@@ -153,7 +153,7 @@ export default function Contact({ subscription }) {
           <meta name="description" content={globalSeo.fallbackSeo.description}></meta>
         </Head>
         <Container>
-          <Intro />
+          <Title />
           <div className={classes.root}>
             <form onSubmit={formik.handleSubmit}>
               <Paper className={classes.paper}>

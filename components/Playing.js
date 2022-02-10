@@ -35,8 +35,7 @@ export default function Playing() {
   }, []);
 
   return (
-    <section>
-      <div className="flex flex-row-reverse sm:flex-row mb-8 space-x-0 sm:space-x-2 w-full">
+      <div className="flex flex-row-reverse sm:flex-row mb-8 space-x-0 sm:space-x-2">
         {songUrl ? (
           <svg className="h-4 w-4 ml-auto mt-1" viewBox="0 0 168 168">
             <path
@@ -101,6 +100,5 @@ export default function Playing() {
           </div>
         </div>
       </div>
-    </section>
   );
 }
