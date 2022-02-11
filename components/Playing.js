@@ -80,7 +80,7 @@ export default function Playing() {
             ) : (
               <p className="text-gray-800 dark:text-gray-200 font-medium">
                 {" "}
-                Not Playing{" "}
+                Hors ligne{" "}
               </p>
             )}
 
