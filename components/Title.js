@@ -14,6 +14,7 @@ export default function Title() {
   const [coins, setCoins] = useState([]);
   const [dataSlack, setDataSlack] = useState();
   const [dataUserSlack, setDataUserSlack] = useState();
+  const [width, setWidth] = useState();
 
   useEffect(() => {
     const profileinfo = () => {
@@ -101,15 +102,37 @@ export default function Title() {
       setStatus("Hors ligne");
     }
   }, [dataSlack?.presence]);
+
+  function handleWindowSizeChange() {
+    setWidth(window?.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
+  const isMobile = width <= 768;
+
   return (
     <section className="title-master">
-      <div className="group-title">
-        <h1>
-          <span>Vincent Hirtz</span>
-          <span>Vincent Hirtz</span>
-        </h1>
-        <h2>Blog</h2>
-      </div>
+      {!isMobile ? (
+        <div className="group-title">
+          <h1>
+            <span>Vincent Hirtz</span>
+            <span>Vincent Hirtz</span>
+          </h1>
+          <h2>Blog</h2>
+        </div>
+      ) : (
+        <div className="group-title">
+          <h1>
+            <span>V.H.</span>
+            <span>V.H.</span>
+          </h1>
+        </div>
+      )}
 
       <Playing style={{ margin: "0 2rem" }} />
 

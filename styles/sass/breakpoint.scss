@@ -1,0 +1,78 @@
+$tiny_phone: 365px;
+$phone: 670px;
+$tablet_portrait : 800px;
+$tablet_landscape : 1110px;
+$destkop: 1300px;
+$destkop_large: 1600px;
+
+@mixin tiny_phone {
+    @media screen and (max-width: #{$tiny_phone}) {
+        @content;
+    }
+}
+
+@mixin phone {
+    @media screen and (max-width: #{$phone}) {
+        @content;
+    }
+}
+
+@mixin tablet_portrait {
+    @media screen and (max-width: #{$tablet_portrait}) {
+        @content;
+    }
+}
+
+@mixin tablet_landscape {
+    @media screen and (max-width: #{$tablet_landscape}) {
+        @content;
+    }
+}
+
+@mixin destkop {
+    @media screen and (max-width: #{$destkop}) {
+        @content;
+    }
+}
+
+@mixin destkop_large {
+    @media screen and (max-width: #{$destkop_large}) {
+        @content;
+    }
+}
+
+@mixin tiny_phone_up {
+    @media screen and (min-width: #{$tiny_phone + 1px}) {
+        @content;
+    }
+}
+
+@mixin phone_up {
+    @media screen and (min-width: #{$phone + 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet_portrait_up {
+    @media screen and (min-width: #{$tablet_portrait + 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet_landscape_up {
+    @media screen and (min-width: #{$tablet_landscape + 1px}) {
+        @content;
+    }
+}
+
+@mixin destkop_up {
+    @media screen and (min-width: #{$destkop + 1px}) {
+        @content;
+    }
+}
+
+@mixin destkop_large_up {
+    @media screen and (min-width: #{$destkop_large + 1px}) {
+        @content;
+    }
+}
