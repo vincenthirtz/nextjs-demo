@@ -49,7 +49,7 @@ export default function Index({ subscription }) {
           ></meta>
         </Head>
         <Container>
-          <Title />
+          <Title title="Blog" />
           <h1 className="text-xl md:text-2xl font-bold tracking-tight md:tracking-tighter leading-tight">
             <ion-icon name="pencil-outline"></ion-icon> Articles ({posts.length}
             )

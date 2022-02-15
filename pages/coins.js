@@ -27,17 +27,19 @@ export default function Coins() {
         coin.name.toLowerCase().includes(search.toLowerCase())
     )
 
+    const TitlePage = "Coins";
+
 
     return (
         <>
             <Layout>
                 <Head>
-                    <title>Coins - Vincent Hirtz</title>
+                    <title>{TitlePage} - Vincent Hirtz</title>
                     <meta name="author" content={"Vincent Hirtz"} />
                     <meta name="description" content={""}></meta>
                 </Head>
                 <Container>
-                    <Title />
+                    <Title title={TitlePage} />
                     <>
                         <form className="coin-container">
                             <TextField fullWidth id="standard-basic" className="coin-input" label="Rechercher" onChange={handleChange} />

@@ -7,7 +7,7 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import Playing from "@/components/Playing";
 
-export default function Title() {
+export default function Title({ title }) {
   const { theme, setTheme } = useTheme();
   const [checked, setChecked] = useState();
   const [status, setStatus] = useState();
@@ -120,16 +120,24 @@ export default function Title() {
       {!isMobile ? (
         <div className="group-title">
           <h1>
-            <span>Vincent Hirtz</span>
-            <span>Vincent Hirtz</span>
+            <Link href="/">
+              <span>Vincent Hirtz</span>
+            </Link>
+            <Link href="/">
+              <span>Vincent Hirtz</span>
+            </Link>
           </h1>
-          <h2>Blog</h2>
+          <h2>{title}</h2>
         </div>
       ) : (
         <div className="group-title">
           <h1>
-            <span>V.H.</span>
-            <span>V.H.</span>
+            <Link href="/">
+              <span>V.H.</span>
+            </Link>
+            <Link href="/">
+              <span>V.H.</span>
+            </Link>
           </h1>
         </div>
       )}

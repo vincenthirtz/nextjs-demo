@@ -23,7 +23,6 @@ export default function Cats() {
         setPage(0);
     };
 
-
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "text/json");
     myHeaders.append("x-api-key", process.env.NEXT_EXAMPLE_CAT_API_KEY);
@@ -81,16 +80,18 @@ export default function Cats() {
         [search, page, rowsPerPage, isLoading]
     );
 
+    const TitlePage = "Cats";
+
     return (
         <>
             <Layout>
                 <Head>
-                    <title>cats - Vincent Hirtz</title>
+                    <title>{TitlePage} - Vincent Hirtz</title>
                     <meta name="author" content={"Vincent Hirtz"} />
                     <meta name="description" content={""}></meta>
                 </Head>
                 <Container>
-                    <Title />
+                    <Title title={TitlePage} />
                     <>
                         <form className="coin-container">
                             <TextField fullWidth id="standard-basic" className="coin-input" label="Rechercher" onChange={handleChange} />
