@@ -1,7 +1,3 @@
-import Avatar from "@/components/Avatar/Avatar";
-import Date from "@/components/DateFR";
-import CoverImage from "@/components/CoverImage/CoverImage";
-import Link from "next/link";
 import PageViews from "@/components/PageViews/PageViews";
 import Youtube from "@/components/Youtube/Youtube";
 
@@ -39,13 +35,7 @@ export default function MoreStories({ posts }) {
                     target={"_blank"}
                     href={"#"}
                   >
-                    <div className="ml-2 text-sm">
-                      {/* <Avatar
-                        className="block rounded-full"
-                        alt={post.title}
-                        src={post.contenturl.thumbnailUrl}
-                      /> */}
-                    </div>
+                    <div className="ml-2 text-sm"></div>
                   </a>
                   <span className="no-underline text-grey-darker hover:text-red-dark">
                     {post?.author?.avatar && <PageViews slug={post.slug} />}

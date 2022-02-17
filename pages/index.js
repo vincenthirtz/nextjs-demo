@@ -3,6 +3,7 @@ import { useQuerySubscription } from "react-datocms";
 import Container from "@/components/Container";
 import Title from "@/components/Title";
 import Layout from "@/components/Layout/Layout";
+import MoreCryptos from "@/components/More/MoreCryptos";
 import MoreStories from "@/components/More/MoreStories";
 import MoreVideos from "@/components/More/MoreVideos";
 import { request } from "@/lib/datocms";
@@ -65,6 +66,11 @@ export default function Index({ subscription }) {
             {games.length})
           </h1>
           {games.length > 0 && <MoreVideos posts={games} />}
+
+          <h1 className="text-xl md:text-2xl font-bold tracking-tight md:tracking-tighter leading-tight">
+            <ion-icon name="analytics-outline"></ion-icon> Cryptos
+          </h1>
+          <MoreCryptos />
         </Container>
       </Layout>
     </>

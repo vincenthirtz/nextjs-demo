@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    perspective: 700px;
+    min-width: max-content;
 
     span {
       cursor: pointer;

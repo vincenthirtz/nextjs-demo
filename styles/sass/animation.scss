@@ -1,0 +1,122 @@
+.wave {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url("https://i.ibb.co/wQZVxxk/wave.png");
+  background-size: 1000px 100px;
+}
+
+.wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animateWaves 10s linear infinite;
+}
+
+.wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 10px;
+  animation: animate 10s linear infinite !important;
+}
+
+.wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 15px;
+  animation: animateWaves 9s linear infinite;
+}
+
+.wave#wave4 {
+  z-index: 999;
+  opacity: 0.7;
+  bottom: 20px;
+  animation: animate 9s linear infinite;
+}
+
+@keyframes animateWaves {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position-x: -1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+
+.crest {
+  width: 3px;
+  height: 20px;
+  margin-right: 3px;
+  background: #65696d;
+  border-radius: 2px;
+}
+
+.crest:hover {
+  background: #19af55;
+}
+
+.crest:nth-child(1) {
+  animation: playing 700ms infinite ease;
+}
+
+.crest:nth-child(2) {
+  animation: playing 1400ms infinite ease;
+}
+
+.crest:nth-child(3) {
+  animation: playing 350ms infinite ease;
+}
+
+.crest:nth-child(4) {
+  animation: playing 550ms infinite ease;
+}
+
+.crest:nth-child(5) {
+  animation: playing 450ms infinite ease;
+}
+
+.crest:nth-child(5) {
+  animation: playing 850ms infinite ease;
+}
+
+.crest:nth-child(6) {
+  animation: playing 650ms infinite ease;
+}
+
+@keyframes playing {
+  0% {
+    height: 3px;
+  }
+  25% {
+    height: 10px;
+  }
+  50% {
+    height: 15px;
+  }
+  75% {
+    height: 17px;
+  }
+  to {
+    height: 3px;
+  }
+}
+
+.qrcode {
+  transition: transform 0.2s;
+}
+
+.qrcode:hover {
+  transform: scale(6);
+  transform-origin: -30% 100%;
+}
